@@ -1,0 +1,18 @@
+//Get the actions
+ curl http://127.0.0.1:3001/actions
+
+ [
+   {
+   "actionName":"Example Action",
+   "frequency":"daily",
+   "price":100,
+   "type":"payment",
+   "metadata":"{'niceWeather':true}",
+   "name":"28DC67CA-E555-4784-9432-B9E4B5067204",
+   "info":"Trigger me!"
+   }
+ ]
+
+
+//Trigger an action
+ curl -H "Content-Type: application/json" -X POST -d '{"actionID": "28DC67CA-E555-4784-9432-B9E4B5067204", "value": "0"}' http://127.0.0.1:3001
