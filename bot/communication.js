@@ -6,7 +6,7 @@ const https = require('https');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
-const baseURL = 'dev.bankingofthings.io';
+const baseURL = 'api.bankingofthings.io';
 const PORT = 443;
 const ENDPOINT = 'bot_iot';
 const URL = baseURL;
