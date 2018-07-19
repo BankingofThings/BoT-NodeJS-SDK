@@ -34,7 +34,7 @@ methods.startAdvertising = function() {
 };
 
 bleno.on('stateChange', function(state) {
-    console.log('Bleno: on -> stateChange: ' + state);
+    console.log('Bot: on -> stateChange: ' + state);
     if (state === 'poweredOn') {
         blenoPoweredOn = true;
     } else {
@@ -44,7 +44,7 @@ bleno.on('stateChange', function(state) {
 });
 
 bleno.on('advertisingStart', function(error) {
-    console.log('on -> advertisingStart: ' +
+    console.log('Bot: on -> advertisingStart: ' +
         (error ? 'error ' + error : 'success')
     );
 
