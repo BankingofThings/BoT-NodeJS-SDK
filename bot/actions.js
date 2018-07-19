@@ -79,22 +79,22 @@ function saveLastTimestampForAction(action) {
 
 methods.startServer = function() {
     var server = http.createServer(function(req, res) {
-      if (req.method === 'GET') {
-        res.writeHead(200, {'Content-Type': 'application/json'});
-        let response = "{}";
-        if (req.url === "/pairing") {
-          response = JSON.stringify({
-              'deviceID': Utils.botID(),
-              'makerID': Utils.makerID(),
-              'publicKey': Utils.getValueForKey('publicKey'),
-          });
-      } else if (req.url === "/actions") {
-        let stringActions = Utils.getValueForKey('actions');
-        response = JSON.parse(stringActions);
-      }
-        res.write(response);
-        res.end();
-      } else if (req.method === 'POST') {
+        if (req.method === 'GET') {
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            let response = "{}";
+            if (req.url === "/pairing") {
+                response = JSON.stringify({
+                    'deviceID': Utils.botID(),
+                    'makerID': Utils.makerID(),
+                    'publicKey': Utils.getValueForKey('publicKey'),
+                });
+            } else if (req.url === "/actions") {
+                let stringActions = Utils.getValueForKey('actions');
+                response = JSON.parse(stringActions);
+            }
+            res.write(response);
+            res.end();
+        } else if (req.method === 'POST') {
             let body = '';
             req.on('data', function(data) {
                 body += data;
