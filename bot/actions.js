@@ -136,8 +136,9 @@ methods.startServer = function() {
             res.end('');
         }
     });
-    server.listen(3001, '127.0.0.1');
-    console.log('Starting local server');
+    let internalPort = 3001;
+    server.listen(internalPort, '127.0.0.1');
+    console.log('Bot: Starting local server, listening on port: ' + internalPort);
 };
 
 module.exports = methods;
