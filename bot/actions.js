@@ -18,8 +18,7 @@ methods.refreshActions = function() {
 function getActions() {
     let stringActions = Utils.getValueForKey('actions');
     let actionsParsed = JSON.parse(stringActions);
-    let actions = JSON.parse(actionsParsed);
-    return actions;
+    return JSON.parse(actionsParsed);
 }
 
 function performAction(action, value, success) {
@@ -41,9 +40,8 @@ function validActionFor(payload) {
     let localBotActions = getActions();
     for (let i = 0; i < localBotActions.length; ++i) {
         let action = localBotActions[i];
-        if (action.name == payload.actionID) {
+        if (action.name === payload.actionID) {
             return action;
-            break;
         }
     }
     return undefined;
@@ -54,15 +52,15 @@ function isValidFrequency(frequency, lastTimestampForAction) {
 
     if (lastTimestampForAction === undefined) {
         return true;
-    } else if (frequency == 'hourly') {
+    } else if (frequency === 'hourly') {
         return (now - lastTimestampForAction) > (3600);
-    } else if (frequency == 'daily') {
+    } else if (frequency === 'daily') {
         return (now - lastTimestampForAction) > (3600 * 24);
-    } else if (frequency == 'weekly') {
+    } else if (frequency === 'weekly') {
         return (now - lastTimestampForAction) > ((3600 * 24) * 7);
-    } else if (frequency == 'monthly') {
+    } else if (frequency === 'monthly') {
         return (now - lastTimestampForAction) > (((3600 * 24) * 7) * 4);
-    } else if (frequency == 'yearly') {
+    } else if (frequency === 'yearly') {
         return (now - lastTimestampForAction) > ((3600 * 24) * 365);
     }
     return false;
@@ -70,8 +68,7 @@ function isValidFrequency(frequency, lastTimestampForAction) {
 
 function lastTimestampForAction(action) {
     let key = 'lastTrigger_' + action.name;
-    let timestamp = Utils.getValueForKey(key);
-    return timestamp;
+    return Utils.getValueForKey(key);
 }
 
 function saveLastTimestampForAction(action) {
@@ -82,25 +79,22 @@ function saveLastTimestampForAction(action) {
 
 methods.startServer = function() {
     var server = http.createServer(function(req, res) {
-      if (req.method == 'GET') {
+      if (req.method === 'GET') {
         res.writeHead(200, {'Content-Type': 'application/json'});
-        var response = "{}";
-        if (req.url == "/pairing") {
-          let qrData = JSON.stringify({
+        let response = "{}";
+        if (req.url === "/pairing") {
+          response = JSON.stringify({
               'deviceID': Utils.botID(),
               'makerID': Utils.makerID(),
               'publicKey': Utils.getValueForKey('publicKey'),
           });
-          response = qrData
-
-      } else if (req.url == "/actions") {
+      } else if (req.url === "/actions") {
         let stringActions = Utils.getValueForKey('actions');
-        let actionsParsed = JSON.parse(stringActions);
-        response = actionsParsed
+        response = JSON.parse(stringActions);
       }
         res.write(response);
         res.end();
-      } else if (req.method == 'POST') {
+      } else if (req.method === 'POST') {
             let body = '';
             req.on('data', function(data) {
                 body += data;
@@ -113,9 +107,9 @@ methods.startServer = function() {
 
                 if (action !== undefined) {
                     let lastTriggerd = lastTimestampForAction(action);
-                    if (isValidFrequency(action.frequency, lastTriggerd) == true) {
+                    if (isValidFrequency(action.frequency, lastTriggerd)) {
                         performAction(action, value, function(success) {
-                            if (success == true) {
+                            if (success) {
                                 saveLastTimestampForAction(action);
                             }
                         });
