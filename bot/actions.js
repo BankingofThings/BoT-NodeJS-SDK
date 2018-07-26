@@ -50,6 +50,7 @@ function validActionFor(payload) {
 function isValidFrequency(frequency, lastTimestampForAction) {
     let now = Math.round((new Date()).getTime() / 1000);
 
+	// N.B.: we could simply use 'if' instead of 'else if' below!
     if (lastTimestampForAction === undefined) {
         return true;
     } else if (frequency === 'hourly') {

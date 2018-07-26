@@ -16,7 +16,7 @@ function SystemInformationService() {
             new ConfigureCharacteristic(),
         ],
     });
-};
+}
 
 util.inherits(SystemInformationService, bleno.PrimaryService);
 module.exports = SystemInformationService;

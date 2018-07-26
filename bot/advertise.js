@@ -15,7 +15,7 @@ methods.StopAdvertising = function() {
 };
 
 methods.startScan = function() {
-    if (blenoPoweredOn == true) {
+    if (blenoPoweredOn === true) {
         bleno.startAdvertising('Bot Connected device', [systemInformationService.uuid]);
     }
 };
@@ -35,11 +35,7 @@ methods.startAdvertising = function() {
 
 bleno.on('stateChange', function(state) {
     console.log('Bot: on -> stateChange: ' + state);
-    if (state === 'poweredOn') {
-        blenoPoweredOn = true;
-    } else {
-        blenoPoweredOn = false;
-    }
+	blenoPoweredOn = (state === 'poweredOn');
     methods.startScan();
 });
 

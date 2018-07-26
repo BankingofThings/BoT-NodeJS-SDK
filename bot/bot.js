@@ -7,7 +7,7 @@ const Utils = require('./utils');
 const BotConfig = require('./botConfiguration');
 
 let registrationLevel = Utils.getValueForKey('regLvl');
-Utils.hasMAkerID();
+Utils.hasMakerID();
 
 if (!registrationLevel && !Utils.botID()) {
     Utils.initializeBoT();

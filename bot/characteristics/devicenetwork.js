@@ -30,8 +30,8 @@ DeviceNetworkCharacteristic.prototype.onReadRequest = function(offset, callback)
                     return;
                 }
 
-                if (alias >= 1) {} else {
-                    // this interface has only one ipv4 adress
+                if (alias < 1) {
+                    // this interface has only one ipv4 address
                     nic = ifname;
                     ip = iface.address;
                 }

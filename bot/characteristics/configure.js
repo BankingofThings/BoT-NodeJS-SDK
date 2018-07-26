@@ -30,11 +30,11 @@ util.inherits(ConfigureCharacteristic, BlenoCharacteristic);
 
 const getPairedStatus = async function(endpoint, makerID) {
   var paired = false;
-  while (paired == false) {
+  while (!paired) {
         let makerID = Utils.makerID();
         let deviceID = Utils.botID();
         let response = await Communication.getJSON('pair', makerID+'/'+deviceID)
-        if (response == "true") {
+        if (response === 'true') {
           console.log('Reloading Config');
           BotConfig.startConfiuration();
           paired = true;
