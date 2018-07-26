@@ -9,8 +9,23 @@ var methods = {};
 
 methods.startConfiuration = function() {
 let registrationLevel = Utils.getValueForKey('regLvl');
-
-if (registrationLevel === 1) {
+    
+if (registrationLevel === 0) {
+  let makerID = Utils.makerID();
+  let deviceID = Utils.botID();
+  let pairingLevel = Communication.getJSON('pair', makerID+'/'+deviceID)
+  pairingLevel.then(function(result) {
+      if (result === 'true') {
+        Utils.setValueForKey('regLvl', 1);
+        setTimeout(() => {
+          console.log('Pairing state changed please reload bot.');
+          process.exit(2);
+        }, 1500);
+      }
+    }, function(err) {
+         console.log(err);
+    })
+} else if (registrationLevel === 1) {
     // Pending device activation
     let postData = JSON.stringify({
         'deviceID': Utils.botID(),
