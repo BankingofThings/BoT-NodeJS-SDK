@@ -16,28 +16,26 @@ methods.makerID = function() {
 
 
 methods.setValueForKey = function(key, value) {
-    let encryptedValue = value;
-    if (value == '') {
+    let encryptedValue = value; // Why is encryptedValue used?
+    if (value === '') {
       store.remove(key);
     } else {
-      store.put(key, encryptedValue);
+      store.put(key, encryptedValue); // Why not simply store.put(key, value); ?
    }
 };
 
 methods.getValueForKey = function(key) {
-    let value = store.get(key);
-    return value;
+	return store.get(key);
 };
 
 methods.botID = function() {
-    let botID = methods.getValueForKey('botID');
-    return botID;
+	return methods.getValueForKey('botID');
 };
 
 
 
-methods.hasMAkerID = function() {
-    if (this.makerID() == 'REPLACE-WITH-OWN-MAKERID') {
+methods.hasMakerID = function() {
+    if (this.makerID() === 'REPLACE-WITH-OWN-MAKERID') {
         console.log('Please add your personalised MakerID here.');
         console.log('utils.js line 7');
         process.exit(2);

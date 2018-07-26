@@ -10,7 +10,7 @@ var methods = {};
 methods.startConfiuration = function() {
 let registrationLevel = Utils.getValueForKey('regLvl');
 
-if (registrationLevel == 1) {
+if (registrationLevel === 1) {
     // Pending device activation
     let postData = JSON.stringify({
         'deviceID': Utils.botID(),
@@ -24,10 +24,10 @@ if (registrationLevel == 1) {
     Utils.setValueForKey('botPubkey', '');
 }
 if (registrationLevel >= 1) {
-    console.log('Registerd Start Advertising');
+    console.log('Registered Start Advertising');
     require('dns').resolve('www.google.com', function(err) {
         if (err) {
-            console.log('Unabel to connect to the internet.');
+            console.log('Unable to connect to the internet.');
         } else {
             BotActions.refreshActions();
             BotActions.startServer();
