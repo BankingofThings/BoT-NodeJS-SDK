@@ -8,7 +8,7 @@ const methods = {};
 
 
 methods.makerID = function() {
-    return 'REPLACE-WITH-OWN-MAKERID';
+    return methods.getValueForKey('makerID');
 };
 
 
@@ -32,12 +32,15 @@ methods.botID = function() {
 	return methods.getValueForKey('botID');
 };
 
-
+methods.storeMakerID = function(data){
+	methods.setValueForKey('makerID', data);
+}
 
 methods.hasMakerID = function() {
-    if (this.makerID() === 'REPLACE-WITH-OWN-MAKERID') {
-        console.log('Please add your personalised MakerID here.');
-        console.log('utils.js line 7');
+    if (methods.makerID() === undefined) {
+        console.log('Your personalised makerID has not been set.');
+		console.log('To set it, bot.js should be run the FIRST time as follows:\n');
+        console.log('node bot.js --makerID REPLACE-WITH-OWN-MAKERID');
         process.exit(2);
     }
 };
