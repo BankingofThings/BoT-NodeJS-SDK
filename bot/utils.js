@@ -54,7 +54,7 @@ methods.initializeBoT = function() {
     methods.setValueForKey('botPrvkey', pair.private);
 };
 
-var methods.processCommandLine = function() {
+methods.processCommandLine = function() {
   var argv = require('yargs')
     .help('help')
     .option('makerID', {
