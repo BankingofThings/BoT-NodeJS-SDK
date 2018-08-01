@@ -67,7 +67,7 @@ methods.processCommandLine = function() {
     if (argv.makerID) {
       methods.setValueForKey('makerID', yargs.makerID);
     }
-}
+};
 
 }
 
