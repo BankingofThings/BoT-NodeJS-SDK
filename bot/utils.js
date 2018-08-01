@@ -54,37 +54,21 @@ methods.initializeBoT = function() {
     methods.setValueForKey('botPrvkey', pair.private);
 };
 
-/*
-    Process command line parameters, if correctly passed:
-	 
-		node bot.js --key value
-		
-	(Fixed format for now: 1 key followed by 1 value)	
-*/
-methods.processCommandLine = function(cmdLine) {
-	const CL_NO_ARGS = 2;
-	const CL_TOO_MANY_ARGS = 5;
-	const CL_KEY_AND_VALUE = 4;
-	const CL_KEY_POS = 2;
-	const CL_VALUE_POS = 3;
-	
-	let argCount = cmdLine.length;
-	if (argCount > CL_NO_ARGS && argCount < CL_TOO_MANY_ARGS) {
-		if (argCount === CL_KEY_AND_VALUE){
-			switch (cmdLine[CL_KEY_POS]) {
-				case '--makerID':
-					methods.setValueForKey('makerID', cmdLine[CL_VALUE_POS]);
-					break;
-				default:
-					console.log('Key not recognized.');
-					process.exit(2);
-					break;
-			}		
-		} else {
-			console.log('Usage: node bot.js --key value');
-			process.exit(2);
-		}
-	}	
+var processCommandLine = function() {
+  var argv = require('yargs')
+    .help('help')
+    .option('makerID', {
+      type: 'string',
+      nargs: 1,
+      describe: 'REPLACE-WITH-OWN-MAKERID'
+    })
+    .argv;
+
+    if (argv.makerID) {
+      methods.setValueForKey('makerID', yargs.makerID);
+    }
+}
+
 }
 
 module.exports = methods;
