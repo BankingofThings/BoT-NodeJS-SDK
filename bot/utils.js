@@ -69,6 +69,4 @@ methods.processCommandLine = function() {
     }
 };
 
-}
-
 module.exports = methods;
