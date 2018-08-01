@@ -59,7 +59,6 @@ methods.processCommandLine = function() {
     .help('help')
     .option('makerID', {
       type: 'string',
-      nargs: 1,
       describe: 'REPLACE-WITH-OWN-MAKERID'
     })
     .argv;
