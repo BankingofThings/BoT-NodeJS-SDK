@@ -4,6 +4,7 @@ const Utils = require('./utils');
 const http = require('http');
 const Communication = require('./communication');
 const uuidv4 = require('uuid/v4');
+const fs = require('fs');
 
 var methods = {};
 
