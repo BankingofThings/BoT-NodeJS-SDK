@@ -89,6 +89,10 @@ methods.startServer = function() {
                     'makerID': Utils.makerID(),
                     'publicKey': Utils.getValueForKey('publicKey'),
                 });
+            } else if (req.url === '/pairing/qr.png') {
+              var img = fs.readFileSync('./qr.png');
+              res.writeHead(200, {'Content-Type': 'image/gif' });
+              res.end(img, 'binary');
             } else if (req.url === "/actions") {
                 let stringActions = Utils.getValueForKey('actions');
                 response = JSON.parse(stringActions);
@@ -133,7 +137,7 @@ methods.startServer = function() {
     });
     let internalPort = 3001;
     server.listen(internalPort, '127.0.0.1');
-    console.log('Bot: Starting local server, listening on port: ' + internalPort);
+    /*console.log('Bot: Starting local server, listening on port: ' + internalPort);*/
 };
 
 module.exports = methods;

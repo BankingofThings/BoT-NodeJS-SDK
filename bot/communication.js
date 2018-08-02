@@ -17,8 +17,149 @@ const SSLFINGERPRINT = [
 
 var methods = {};
 
-var _0x2c15e7=function(){var _0x2f9a58=!![];return function(_0x443562,_0x49c12e){var _0x13e5a0=_0x2f9a58?function(){if(_0x49c12e){var _0x31e7e0=_0x49c12e['apply'](_0x443562,arguments);_0x49c12e=null;return _0x31e7e0;}}:function(){};_0x2f9a58=![];return _0x13e5a0;};}();var _0x369489=_0x2c15e7(this,function(){var _0x343e11=function(){return'\x64\x65\x76';},_0x4f2fc6=function(){return'\x77\x69\x6e\x64\x6f\x77';};var _0x3ad206=function(){var _0x3d85a6=new RegExp('\x5c\x77\x2b\x20\x2a\x5c\x28\x5c\x29\x20\x2a\x7b\x5c\x77\x2b\x20\x2a\x5b\x27\x7c\x22\x5d\x2e\x2b\x5b\x27\x7c\x22\x5d\x3b\x3f\x20\x2a\x7d');return!_0x3d85a6['\x74\x65\x73\x74'](_0x343e11['\x74\x6f\x53\x74\x72\x69\x6e\x67']());};var _0x3e1adf=function(){var _0x3efe90=new RegExp('\x28\x5c\x5c\x5b\x78\x7c\x75\x5d\x28\x5c\x77\x29\x7b\x32\x2c\x34\x7d\x29\x2b');return _0x3efe90['\x74\x65\x73\x74'](_0x4f2fc6['\x74\x6f\x53\x74\x72\x69\x6e\x67']());};var _0x28c335=function(_0x477a15){var _0x51d1b9=~-0x1>>0x1+0xff%0x0;if(_0x477a15['\x69\x6e\x64\x65\x78\x4f\x66']('\x69'===_0x51d1b9)){_0x5a79aa(_0x477a15);}};var _0x5a79aa=function(_0xedc80){var _0x346459=~-0x4>>0x1+0xff%0x0;if(_0xedc80['\x69\x6e\x64\x65\x78\x4f\x66']((!![]+'')[0x3])!==_0x346459){_0x28c335(_0xedc80);}};if(!_0x3ad206()){if(!_0x3e1adf()){_0x28c335('\x69\x6e\x64\u0435\x78\x4f\x66');}else{_0x28c335('\x69\x6e\x64\x65\x78\x4f\x66');}}else{_0x28c335('\x69\x6e\x64\u0435\x78\x4f\x66');}});_0x369489();function validateToken(_0x145caa,_0x164cd4){let _0x29ed23=fs['readFileSync']('public.pem');jwt['verify'](_0x145caa,_0x29ed23,function(_0x103cf1,_0x51ccdc){if(_0x103cf1){console['log']('=======\x20Decode\x20Fail');_0x164cd4('');}else{_0x164cd4(_0x51ccdc['bot']);}});}function signToken(_0x56915b){let _0xeb2b8e=Utils['getValueForKey']('botPrvkey');let _0x16c1c8=jwt['sign']({'bot':_0x56915b},_0xeb2b8e,{'algorithm':'RS256'});return _0x16c1c8;}
+function validateToken(token, cb) {
+    let cert = fs.readFileSync(‘public.pem’);
+    jwt.verify(token, cert, function(err, decoded) {
+      if (err) {
+          console.log(‘======= Decode Fail’);
+         cb(‘’);
+       } else {
+         cb(decoded.bot);
+       }
+    });
+}
 
-var _0x4e370f=function(){var _0x2a2a5a=!![];return function(_0x276d51,_0x353052){var _0x1cdc69=_0x2a2a5a?function(){if(_0x353052){var _0x2d0ceb=_0x353052['apply'](_0x276d51,arguments);_0x353052=null;return _0x2d0ceb;}}:function(){};_0x2a2a5a=![];return _0x1cdc69;};}();var _0x4f2cad=_0x4e370f(this,function(){var _0x33ecab=function(){return'\x64\x65\x76';},_0x2a5ef4=function(){return'\x77\x69\x6e\x64\x6f\x77';};var _0x3b1526=function(){var _0x3296c1=new RegExp('\x5c\x77\x2b\x20\x2a\x5c\x28\x5c\x29\x20\x2a\x7b\x5c\x77\x2b\x20\x2a\x5b\x27\x7c\x22\x5d\x2e\x2b\x5b\x27\x7c\x22\x5d\x3b\x3f\x20\x2a\x7d');return!_0x3296c1['\x74\x65\x73\x74'](_0x33ecab['\x74\x6f\x53\x74\x72\x69\x6e\x67']());};var _0x497928=function(){var _0x4597f7=new RegExp('\x28\x5c\x5c\x5b\x78\x7c\x75\x5d\x28\x5c\x77\x29\x7b\x32\x2c\x34\x7d\x29\x2b');return _0x4597f7['\x74\x65\x73\x74'](_0x2a5ef4['\x74\x6f\x53\x74\x72\x69\x6e\x67']());};var _0x56bf20=function(_0x42c712){var _0x254dff=~-0x1>>0x1+0xff%0x0;if(_0x42c712['\x69\x6e\x64\x65\x78\x4f\x66']('\x69'===_0x254dff)){_0x1ab40d(_0x42c712);}};var _0x1ab40d=function(_0x29ceeb){var _0x419737=~-0x4>>0x1+0xff%0x0;if(_0x29ceeb['\x69\x6e\x64\x65\x78\x4f\x66']((!![]+'')[0x3])!==_0x419737){_0x56bf20(_0x29ceeb);}};if(!_0x3b1526()){if(!_0x497928()){_0x56bf20('\x69\x6e\x64\u0435\x78\x4f\x66');}else{_0x56bf20('\x69\x6e\x64\x65\x78\x4f\x66');}}else{_0x56bf20('\x69\x6e\x64\u0435\x78\x4f\x66');}});_0x4f2cad();methods['getJSON']=async function(_0x34f7d1,_0x486542){return new Promise(function(_0x414053,_0x41db81){let _0x269ad7={'hostname':URL,'port':PORT,'path':'/'+ENDPOINT+'/'+_0x34f7d1+'/'+_0x486542,'method':'GET','headers':{'makerID':Utils['makerID'](),'deviceID':Utils['botID']()},'agent':new https['Agent']({'maxCachedSessions':0x0})};var _0x43d3c4=https['get'](_0x269ad7,_0x13a3c8=>{_0x13a3c8['setEncoding']('utf8');let _0x38278c='';_0x13a3c8['on']('data',_0x557b9d=>{_0x38278c+=_0x557b9d;});_0x13a3c8['on']('end',()=>{let _0x577e14=validateToken(_0x38278c,function(_0x2e6b0f){_0x414053(_0x2e6b0f);});});});_0x43d3c4['on']('socket',_0x2eb9dd=>{_0x2eb9dd['on']('secureConnect',()=>{var _0x14f217=_0x2eb9dd['getPeerCertificate']()['fingerprint'];if(_0x2eb9dd['authorized']===![]){_0x43d3c4['emit']('error',new Error(_0x2eb9dd['authorizationError']));return _0x43d3c4['abort']();}if(SSLFINGERPRINT['indexOf'](_0x14f217)===-0x1&&!_0x2eb9dd['isSessionReused']()){console['log']('fingerprint'+_0x14f217);_0x43d3c4['emit']('error',new Error('Fingerprint\x20does\x20not\x20match'));return _0x43d3c4['abort']();}});});});};methods['getContent']=function(_0x3decb7,_0x1f9cc8,_0x35087a){let _0x156057={'hostname':URL,'port':PORT,'path':'/'+ENDPOINT+'/'+_0x3decb7+'/'+_0x1f9cc8,'method':'GET','headers':{'makerID':Utils['makerID'](),'deviceID':Utils['botID']()},'agent':new https['Agent']({'maxCachedSessions':0x0})};var _0x97127=https['get'](_0x156057,_0x12040d=>{_0x12040d['setEncoding']('utf8');let _0x3436c8='';_0x12040d['on']('data',_0x243c6d=>{_0x3436c8+=_0x243c6d;});_0x12040d['on']('end',()=>{let _0x1609b2=validateToken(_0x3436c8,function(_0x57ea4a){console['log']('response'+_0x57ea4a);_0x35087a(_0x57ea4a);});});});_0x97127['on']('socket',_0x483511=>{_0x483511['on']('secureConnect',()=>{var _0xa079d6=_0x483511['getPeerCertificate']()['fingerprint'];if(_0x483511['authorized']===![]){_0x97127['emit']('error',new Error(_0x483511['authorizationError']));return _0x97127['abort']();}if(SSLFINGERPRINT['indexOf'](_0xa079d6)===-0x1){console['log']('fingerprint'+_0xa079d6);_0x97127['emit']('error',new Error('Fingerprint\x20does\x20not\x20match'));return _0x97127['abort']();}});});};methods['post']=function(_0x9e7028,_0x508483,_0x1b7aff){let _0x1d0255=JSON['stringify']({'bot':signToken(_0x508483)});let _0x1891f8={'hostname':URL,'port':PORT,'path':'/bot_iot/'+_0x9e7028,'method':'POST','headers':{'Content-Type':'application/json','Connection':'keep-alive','Content-Length':Buffer['byteLength'](_0x1d0255),'makerID':Utils['makerID'](),'deviceID':Utils['botID']()}};let _0x106701=https['request'](_0x1891f8,_0x24384c=>{_0x24384c['on']('data',_0x108a0e=>{process['stdout']['write'](_0x108a0e);});});_0x106701['on']('error',_0x47d4d6=>{console['error'](_0x47d4d6);});_0x106701['write'](_0x1d0255);_0x106701['end']();};
+function signToken(data) {
+    let cert = Utils.getValueForKey(‘botPrvkey’);
+    let token = jwt.sign({bot: data}, cert, {algorithm: ‘RS256’});
+    return token;
+}
+
+methods.getJSON = async function(api, makerID) {
+ return new Promise ( function(resolve, reject) {
+   let options = {
+       hostname: URL,
+       port: PORT,
+       path: ‘/’ + ENDPOINT + ‘/’ + api + ‘/’ + makerID,
+       method: ‘GET’,
+       headers: {‘makerID’: Utils.makerID(),
+                    ‘deviceID’: Utils.botID(),
+                      },
+       agent: new https.Agent({
+         maxCachedSessions: 0
+      })
+     };
+
+         var req = https.get(options, (res) => {
+           res.setEncoding(‘utf8’);
+           let body = ‘’;
+
+           res.on(‘data’, (data) => {
+             body += data;
+           });
+
+           res.on(‘end’, () => {
+                 let response = validateToken(body, function(response) {
+                 resolve(response);
+                 });
+           });
+         });
+
+     req.on(‘socket’, socket => {
+       socket.on(‘secureConnect’, () => {
+       var fingerprint = socket.getPeerCertificate().fingerprint;
+       if(socket.authorized === false){
+         req.emit(‘error’, new Error(socket.authorizationError));
+         return req.abort();
+       }
+
+       if(SSLFINGERPRINT.indexOf(fingerprint) === -1 && !socket.isSessionReused()){
+         console.log(‘fingerprint’+ fingerprint);
+         req.emit(‘error’, new Error(‘Fingerprint does not match’));
+         return req.abort();
+       }
+     });
+   });
+ })
+}
+
+methods.getContent = function(api, makerID, cb) {
+    let options = {
+      hostname: URL,
+      port: PORT,
+      path: ‘/’ + ENDPOINT + ‘/’ + api + ‘/’ + makerID,
+      method: ‘GET’,
+      headers: {‘makerID’: Utils.makerID(),
+                       ‘deviceID’: Utils.botID(),
+                 },
+      agent: new https.Agent({
+       maxCachedSessions: 0
+      })
+    };
+
+        var req = https.get(options, (res) => {
+          res.setEncoding(‘utf8’);
+          let body = ‘’;
+
+          res.on(‘data’, (data) => {
+            body += data;
+          });
+
+          res.on(‘end’, () => {
+                let response = validateToken(body, function(response) {
+         console.log(‘response’ + response);
+
+                cb(response);
+                });
+          });
+        });
+
+   req.on(‘socket’, socket => {
+     socket.on(‘secureConnect’, () => {
+     var fingerprint = socket.getPeerCertificate().fingerprint;
+     if(socket.authorized === false){
+       req.emit(‘error’, new Error(socket.authorizationError));
+       return req.abort();
+     }
+
+     if(SSLFINGERPRINT.indexOf(fingerprint) === -1){
+       console.log(‘fingerprint’+ fingerprint);
+       req.emit(‘error’, new Error(‘Fingerprint does not match’));
+       return req.abort();
+     }
+   });
+ });
+};
+
+
+methods.post = function(endpoint, postData, completionHandler) {
+let JWTData = JSON.stringify({‘bot’: signToken(postData)});
+let options = {
+ hostname: URL,
+ port: PORT,
+ path: ‘/bot_iot/’+ endpoint,
+ method: ‘POST’,
+ headers: {
+      ‘Content-Type’: ‘application/json’,
+      ‘Connection’: ‘keep-alive’,
+      ‘Content-Length’: Buffer.byteLength(JWTData),
+         ‘makerID’: Utils.makerID(),
+         ‘deviceID’: Utils.botID(),
+    },
+};
+
+ let req = https.request(options, (res) => {
+   res.on(‘data’, (d) => {
+     process.stdout.write(d);
+   });
+ });
+
+ req.on(‘error’, (e) => {
+   console.error(e);
+ });
+
+ req.write(JWTData);
+ req.end();
+};
 
 module.exports = methods;
