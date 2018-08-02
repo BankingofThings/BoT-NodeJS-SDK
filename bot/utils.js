@@ -8,7 +8,7 @@ const methods = {};
 
 
 methods.makerID = function() {
-    return 'REPLACE-WITH-OWN-MAKERID';
+    return methods.getValueForKey('makerID');
 };
 
 
@@ -32,13 +32,10 @@ methods.botID = function() {
 	return methods.getValueForKey('botID');
 };
 
-
-
 methods.hasMakerID = function() {
-    if (this.makerID() === 'REPLACE-WITH-OWN-MAKERID') {
-        console.log('Please add your personalised MakerID here.');
-        console.log('utils.js line 7');
-        process.exit(2);
+    if (methods.makerID() === undefined) {
+		console.log('Your personalised makerID has not been set.\nTo set it, bot.js should be run the FIRST time as follows:\n\n\tnode bot.js --makerID REPLACE-WITH-OWN-MAKERID');
+		process.exit(2);
     }
 };
 
@@ -55,6 +52,20 @@ methods.initializeBoT = function() {
 
     methods.setValueForKey('publicKey', publicKey);
     methods.setValueForKey('botPrvkey', pair.private);
+};
+
+methods.processCommandLine = function() {
+  var argv = require('yargs')
+    .help('help')
+    .option('makerID', {
+      type: 'string',
+      describe: 'REPLACE-WITH-OWN-MAKERID'
+    })
+    .argv;
+
+    if (argv.makerID) {
+      methods.setValueForKey('makerID', argv.makerID);
+    }
 };
 
 module.exports = methods;
