@@ -5,6 +5,7 @@ var SystemInformationService = require('./systeminformationservice');
 var systemInformationService = new SystemInformationService();
 var blenoPoweredOn = false;
 var qrcode = require('qrcode-terminal');
+var qr2png = require('qrcode');
 var Utils = require('./utils');
 
 var methods = {};
@@ -30,6 +31,12 @@ methods.startAdvertising = function() {
     qrcode.generate(qrData, {
         small: true,
     });
+
+    qr2png.toFile('./qr.png', qrData, function (err) {
+      if (err) throw err;
+      //console.log('done') 
+})
+
     methods.startScan();
 };
 
