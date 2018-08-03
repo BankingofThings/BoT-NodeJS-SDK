@@ -1,3 +1,6 @@
+<img src="https://bankingofthings.io/img/github-header.png" style="margin:auto" alt="BoT">
+
+
 # IoT-SDK-NodeJS
 
 This is our Banking of Things SDK that enables your IoT devices to perform seamless autonomous payments.
