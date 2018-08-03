@@ -17,6 +17,7 @@ methods.refreshActions = function() {
 };
 
 function getActions() {
+    console.log('Retrieving actions');
     let stringActions = Utils.getValueForKey('actions');
     let actionsParsed = JSON.parse(stringActions);
     return JSON.parse(actionsParsed);
@@ -107,10 +108,10 @@ methods.startServer = function() {
             });
             req.on('end', function() {
                 let payload = JSON.parse(body);
+
+                var value = 0;
                 if (payload.value) {
-                  let value = payload.value;
-                } else {
-                  let value = 0;
+                  value = payload.value;
                 }
 
                 let action = validActionFor(payload);
