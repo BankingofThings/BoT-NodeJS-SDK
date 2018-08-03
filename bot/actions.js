@@ -92,7 +92,7 @@ methods.startServer = function() {
                 });
             } else if (req.url === '/pairing/qr.png') {
               var img = fs.readFileSync('./qr.png');
-              res.writeHead(200, {'Content-Type': 'image/gif' });
+              res.writeHead(200, {'Content-Type': 'image/png' });
               res.end(img, 'binary');
             } else if (req.url === "/actions") {
                 let stringActions = Utils.getValueForKey('actions');
