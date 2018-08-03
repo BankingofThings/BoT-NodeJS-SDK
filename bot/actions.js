@@ -4,6 +4,7 @@ const Utils = require('./utils');
 const http = require('http');
 const Communication = require('./communication');
 const uuidv4 = require('uuid/v4');
+const fs = require('fs');
 
 var methods = {};
 
@@ -89,6 +90,10 @@ methods.startServer = function() {
                     'makerID': Utils.makerID(),
                     'publicKey': Utils.getValueForKey('publicKey'),
                 });
+            } else if (req.url === '/pairing/qr.png') {
+              var img = fs.readFileSync('./qr.png');
+              res.writeHead(200, {'Content-Type': 'image/png' });
+              res.end(img, 'binary');
             } else if (req.url === "/actions") {
                 let stringActions = Utils.getValueForKey('actions');
                 response = JSON.parse(stringActions);

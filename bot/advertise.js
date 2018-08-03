@@ -4,7 +4,7 @@ var bleno = require('bleno');
 var SystemInformationService = require('./systeminformationservice');
 var systemInformationService = new SystemInformationService();
 var blenoPoweredOn = false;
-var qrcode = require('qrcode-terminal');
+var qr2png = require('qrcode');
 var Utils = require('./utils');
 
 var methods = {};
@@ -27,22 +27,23 @@ methods.startAdvertising = function() {
         'publicKey': Utils.getValueForKey('publicKey'),
     });
 
-    qrcode.generate(qrData, {
-        small: true,
+    qr2png.toFile('./qr.png', qrData, function (err) {
+      if (err) throw err;
     });
+
     methods.startScan();
 };
 
 bleno.on('stateChange', function(state) {
-    console.log('Bot: on -> stateChange: ' + state);
+  /*console.log('Bot: on -> stateChange: ' + state);*/
 	blenoPoweredOn = (state === 'poweredOn');
     methods.startScan();
 });
 
 bleno.on('advertisingStart', function(error) {
-    console.log('Bot: on -> advertisingStart: ' +
+    /*console.log('Bot: on -> advertisingStart: ' +
         (error ? 'error ' + error : 'success')
-    );
+    );*/
 
     if (!error) {
         bleno.setServices([

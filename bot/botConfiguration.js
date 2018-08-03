@@ -9,7 +9,8 @@ var methods = {};
 
 methods.startConfiuration = function() {
 let registrationLevel = Utils.getValueForKey('regLvl');
-    
+BotActions.startServer();
+
 if (registrationLevel === 0) {
   let makerID = Utils.makerID();
   let deviceID = Utils.botID();
@@ -45,7 +46,6 @@ if (registrationLevel >= 1) {
             console.log('Unable to connect to the internet.');
         } else {
             BotActions.refreshActions();
-            BotActions.startServer();
         }
     });
   }
