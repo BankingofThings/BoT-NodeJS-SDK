@@ -107,7 +107,11 @@ methods.startServer = function() {
             });
             req.on('end', function() {
                 let payload = JSON.parse(body);
-                let value = payload.value;
+                if (payload.value) {
+                  let value = payload.value;
+                } else {
+                  let value = 0;
+                }
 
                 let action = validActionFor(payload);
 
