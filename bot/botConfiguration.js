@@ -4,7 +4,7 @@ const BotAdvertise = require('./advertise');
 const Communication = require('./communication');
 const BotActions = require('./actions');
 const Utils = require('./utils');
-ß
+
 var methods = {};
 
 methods.startConfiuration = function() {

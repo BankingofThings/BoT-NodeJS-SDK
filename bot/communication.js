@@ -74,7 +74,6 @@ methods.getJSON = async function(api, makerID) {
         }
 
         if(SSLFINGERPRINT.indexOf(fingerprint) === -1 && !socket.isSessionReused()){
-          console.log('fingerprint'+ fingerprint);
           req.emit('error', new Error('Fingerprint does not match'));
           return req.abort();
         }
@@ -107,8 +106,6 @@ methods.getContent = function(api, makerID, cb) {
 
 		  res.on('end', () => {
 				let response = validateToken(body, function(response) {
-          console.log('response' + response);
-
 			    cb(response);
 				});
 		  });
@@ -123,7 +120,6 @@ methods.getContent = function(api, makerID, cb) {
       }
 
       if(SSLFINGERPRINT.indexOf(fingerprint) === -1){
-        console.log('fingerprint'+ fingerprint);
         req.emit('error', new Error('Fingerprint does not match'));
         return req.abort();
       }
