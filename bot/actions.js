@@ -109,10 +109,7 @@ methods.startServer = function() {
             req.on('end', function() {
                 let payload = JSON.parse(body);
 
-                var value = 0;
-                if (payload.value) {
-                  value = payload.value;
-                }
+                let value = payload.hasOwnProperty('value') ? payload.value : 0;
 
                 let action = validActionFor(payload);
 
