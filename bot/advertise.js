@@ -52,9 +52,4 @@ bleno.on('advertisingStart', function(error) {
     }
 });
 
-methods.isBusy = function() {
-    return busy;
-};
-
-
 module.exports = methods;
