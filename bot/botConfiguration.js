@@ -7,7 +7,7 @@ const Utils = require('./utils');
 
 var methods = {};
 
-methods.startConfiuration = function() {
+methods.startConfiguration = function() {
 let registrationLevel = Utils.getValueForKey('regLvl');
 BotActions.startServer();
 

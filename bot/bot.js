@@ -1,7 +1,6 @@
 'use strict';
 
 const BotAdvertise = require('./advertise');
-const Communication = require('./communication');
 const BotActions = require('./actions');
 const Utils = require('./utils');
 const BotConfig = require('./botConfiguration');
@@ -16,4 +15,4 @@ if (!registrationLevel && !Utils.botID()) {
 }
 
 BotAdvertise.startAdvertising();
-BotConfig.startConfiuration();
+BotConfig.startConfiguration();
