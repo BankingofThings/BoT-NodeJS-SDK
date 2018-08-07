@@ -17,6 +17,7 @@ methods.refreshActions = function() {
 };
 
 function getActions() {
+    console.log('Retrieving actions');
     let stringActions = Utils.getValueForKey('actions');
     let actionsParsed = JSON.parse(stringActions);
     return JSON.parse(actionsParsed);
@@ -107,7 +108,8 @@ methods.startServer = function() {
             });
             req.on('end', function() {
                 let payload = JSON.parse(body);
-                let value = payload.value;
+
+                let value = payload.hasOwnProperty('value') ? payload.value : 0;
 
                 let action = validActionFor(payload);
 
