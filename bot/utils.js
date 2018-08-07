@@ -13,11 +13,10 @@ methods.makerID = function() {
 };
 
 methods.setValueForKey = function(key, value) {
-    let encryptedValue = value; // Why is encryptedValue used?
     if (value === '') {
       store.remove(key);
     } else {
-      store.put(key, encryptedValue); // Why not simply store.put(key, value); ?
+      store.put(key, value);
    }
 };
 
@@ -30,10 +29,10 @@ methods.botID = function() {
 };
 
 methods.hasMakerID = function() {
-    if (methods.makerID() === undefined) {
-		console.log('Your personalised makerID has not been set.\nTo set it, bot.js should be run the FIRST time as follows:\n\n\tnode bot.js --makerID REPLACE-WITH-OWN-MAKERID');
-		process.exit(2);
-    }
+  if (methods.makerID() === undefined) {
+    console.log('Your personalised makerID has not been set.\nTo set it, bot.js should be run the FIRST time as follows:\n\n\tnode bot.js --makerID REPLACE-WITH-OWN-MAKERID');
+    process.exit(2);
+  }
 };
 
 methods.initializeBoT = function() {

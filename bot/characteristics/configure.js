@@ -36,7 +36,7 @@ const getPairedStatus = async function(endpoint, makerID) {
         let response = await Communication.getJSON('pair', makerID+'/'+deviceID)
         if (response === 'true') {
           console.log('Reloading Config');
-          BotConfig.startConfiuration();
+          BotConfig.startConfiguration();
           paired = true;
         }
   }

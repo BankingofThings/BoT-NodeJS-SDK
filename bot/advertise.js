@@ -35,15 +35,15 @@ methods.startAdvertising = function() {
 };
 
 bleno.on('stateChange', function(state) {
-  /*console.log('Bot: on -> stateChange: ' + state);*/
+  console.log('Bot: on -> stateChange: ' + state);
 	blenoPoweredOn = (state === 'poweredOn');
     methods.startScan();
 });
 
 bleno.on('advertisingStart', function(error) {
-    /*console.log('Bot: on -> advertisingStart: ' +
+    console.log('Bot: on -> advertisingStart: ' +
         (error ? 'error ' + error : 'success')
-    );*/
+    );
 
     if (!error) {
         bleno.setServices([
@@ -51,10 +51,5 @@ bleno.on('advertisingStart', function(error) {
         ]);
     }
 });
-
-methods.isBusy = function() {
-    return busy;
-};
-
 
 module.exports = methods;
