@@ -6,9 +6,7 @@ const Utils = require('../utils');
 const BotConfig = require('../botConfiguration');
 const Communication = require('../communication');
 const Job = require('events');
-var em = new Job.EventEmitter();
-
-
+let em = new Job.EventEmitter();
 
 var BlenoCharacteristic = bleno.Characteristic;
 var BlenoDescriptor = bleno.Descriptor;
@@ -28,27 +26,25 @@ function ConfigureCharacteristic() {
 
 util.inherits(ConfigureCharacteristic, BlenoCharacteristic);
 
-const getPairedStatus = async function(endpoint, makerID) {
-  var paired = false;
-  while (!paired) {
+const getPairedStatus = async function (endpoint, makerID) {
+    var paired = false;
+    while (!paired) {
         let makerID = Utils.makerID();
         let deviceID = Utils.botID();
-        let response = await Communication.getJSON('pair', makerID+'/'+deviceID)
+        let response = await Communication.getJSON('pair', makerID + '/' + deviceID)
         if (response === 'true') {
-          console.log('Reloading Config');
-          BotConfig.startConfiguration();
-          paired = true;
+            console.log('Reloading Config');
+            BotConfig.startConfiguration();
+            paired = true;
         }
-  }
-}
-
+    }
+};
 
 em.on('skipWifi', function (data) {
     getPairedStatus()
 });
 
-
-ConfigureCharacteristic.prototype.onWriteRequest = async function(data, offset, withoutResponse, callback) {
+ConfigureCharacteristic.prototype.onWriteRequest = async function (data, offset, withoutResponse, callback) {
     console.log('FirstCharacteristic - onWriteRequest: value = ' + data.toString('utf-8'));
 
     if (offset) {
@@ -65,34 +61,35 @@ ConfigureCharacteristic.prototype.onWriteRequest = async function(data, offset, 
         let details = JSON.parse(data);
 
         if (details.Skip == true) {
-          console.log('Skipping Wifi');
-          Utils.setValueForKey('regLvl', 1);
+            console.log('Skipping Wifi');
+            Utils.setValueForKey('regLvl', 1);
 
-          em.emit('skipWifi', 'Poll');
+            em.emit('skipWifi', 'Poll');
 
         } else {
-        if (details.SSID != '') {
-            var wifiDetails = 'ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\r\n update_config=1\r\n country=GB \r\nnetwork={ \r\n        ssid="' + details.SSID + '" \r\n        psk="' + details.PWD + '" \r\n        key_mgmt=WPA-PSK \r\n}';
-        }
-        Utils.setValueForKey('regLvl', 1);
-        setTimeout(function() {
-            let sys = require('sys');
-            let exec = require('child_process').exec;
-
-            function puts(error, stdout, stderr) {
-                sys.puts(stdout);
+            if (details.SSID != '') {
+                var wifiDetails = 'ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\r\n update_config=1\r\n country=GB \r\nnetwork={ \r\n        ssid="' + details.SSID + '" \r\n        psk="' + details.PWD + '" \r\n        key_mgmt=WPA-PSK \r\n}';
             }
-            exec('sudo echo \'' + wifiDetails + '\' > ./wpa_supplicant.conf', puts);
-            exec('sudo cp ./wpa_supplicant.conf /etc/wpa_supplicant/', puts);
-            exec('sudo rm ./wpa_supplicant.conf', puts);
-            exec('sudo sleep 1 && reboot', puts);
-            process.exit();
-        }, 3000);
-      }
+            Utils.setValueForKey('regLvl', 1);
+            setTimeout(function () {
+                let sys = require('sys');
+                let exec = require('child_process').exec;
+
+                function puts(error, stdout, stderr) {
+                    sys.puts(stdout);
+                }
+
+                exec('sudo echo \'' + wifiDetails + '\' > ./wpa_supplicant.conf', puts);
+                exec('sudo cp ./wpa_supplicant.conf /etc/wpa_supplicant/', puts);
+                exec('sudo rm ./wpa_supplicant.conf', puts);
+                exec('sudo sleep 1 && reboot', puts);
+                process.exit();
+            }, 3000);
+        }
     }
 };
 
-ConfigureCharacteristic.prototype.onReadRequest = function(offset, callback) {
+ConfigureCharacteristic.prototype.onReadRequest = function (offset, callback) {
     if (!offset) {
         this._value = new Buffer(JSON.stringify({
             'BoT': 'Configuration Done',
