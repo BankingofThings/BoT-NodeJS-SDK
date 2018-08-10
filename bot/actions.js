@@ -24,15 +24,18 @@ function getActions() {
 }
 
 function performAction(action, success, value) {
-    let postData = JSON.stringify({
+    let postData = {
         'deviceID': Utils.botID(),
         'makerID': Utils.makerID(),
         'name': action.name,
-        'value': value,
         'queueID': uuidv4()
-    });
+    };
 
-    Communication.post('actions', postData, function (success) {
+    if (value !== null) {
+        postData.value = value;
+    }
+
+    Communication.post('actions', JSON.stringify(postData), function (success) {
         success(true);
     });
 }
