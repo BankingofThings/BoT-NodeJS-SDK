@@ -31,7 +31,7 @@ const getPairedStatus = async function (endpoint, makerID) {
     while (!paired) {
         let makerID = Utils.makerID();
         let deviceID = Utils.botID();
-        let response = await Communication.getJSON('pair', makerID + '/' + deviceID)
+        let response = await Communication.getJSON('pair', makerID + '/' + deviceID);
         if (response === 'true') {
             console.log('Reloading Config');
             BotConfig.startConfiguration();
@@ -41,7 +41,7 @@ const getPairedStatus = async function (endpoint, makerID) {
 };
 
 em.on('skipWifi', function (data) {
-    getPairedStatus()
+    getPairedStatus();
 });
 
 ConfigureCharacteristic.prototype.onWriteRequest = async function (data, offset, withoutResponse, callback) {
@@ -60,14 +60,14 @@ ConfigureCharacteristic.prototype.onWriteRequest = async function (data, offset,
         callback(bleno.Characteristic.RESULT_SUCCESS, data.slice(offset));
         let details = JSON.parse(data);
 
-        if (details.Skip == true) {
+        if (details.Skip === true) {
             console.log('Skipping Wifi');
             Utils.setValueForKey('regLvl', 1);
 
             em.emit('skipWifi', 'Poll');
 
         } else {
-            if (details.SSID != '') {
+            if (details.SSID !== '') {
                 var wifiDetails = 'ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\r\n update_config=1\r\n country=GB \r\nnetwork={ \r\n        ssid="' + details.SSID + '" \r\n        psk="' + details.PWD + '" \r\n        key_mgmt=WPA-PSK \r\n}';
             }
             Utils.setValueForKey('regLvl', 1);
