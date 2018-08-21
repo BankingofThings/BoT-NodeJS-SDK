@@ -1,10 +1,10 @@
-var bleno = require('bleno');
-var util = require('util');
+const bleno = require('bleno');
+const util = require('util');
 
-var DeviceCharacteristic = require('./characteristics/device');
-var DeviceInfoCharacteristic = require('./characteristics/deviceinfo');
-var DeviceNetworkCharacteristic = require('./characteristics/devicenetwork');
-var ConfigureCharacteristic = require('./characteristics/configure');
+const DeviceCharacteristic = require('./characteristics/device');
+const DeviceInfoCharacteristic = require('./characteristics/deviceinfo');
+const DeviceNetworkCharacteristic = require('./characteristics/devicenetwork');
+const ConfigureCharacteristic = require('./characteristics/configure');
 
 function SystemInformationService() {
     bleno.PrimaryService.call(this, {

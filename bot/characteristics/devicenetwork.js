@@ -6,7 +6,7 @@ const util = require('util');
 
 var BlenoCharacteristic = bleno.Characteristic;
 
-var DeviceNetworkCharacteristic = function() {
+var DeviceNetworkCharacteristic = function () {
     DeviceNetworkCharacteristic.super_.call(this, {
         uuid: 'C42639DC-270D-4690-A8B3-6BA661C6C899',
         properties: ['read'],
@@ -15,16 +15,16 @@ var DeviceNetworkCharacteristic = function() {
     this._value = new Buffer(0);
 };
 
-DeviceNetworkCharacteristic.prototype.onReadRequest = function(offset, callback) {
+DeviceNetworkCharacteristic.prototype.onReadRequest = function (offset, callback) {
     if (!offset) {
         let ifaces = os.networkInterfaces();
         let nic = '';
         let ip = '';
 
-        Object.keys(ifaces).forEach(function(ifname) {
+        Object.keys(ifaces).forEach(function (ifname) {
             let alias = 0;
 
-            ifaces[ifname].forEach(function(iface) {
+            ifaces[ifname].forEach(function (iface) {
                 if ('IPv4' !== iface.family || iface.internal !== false) {
                     // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
                     return;

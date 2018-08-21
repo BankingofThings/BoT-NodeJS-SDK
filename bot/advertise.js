@@ -5,22 +5,22 @@ var SystemInformationService = require('./systeminformationservice');
 var systemInformationService = new SystemInformationService();
 var blenoPoweredOn = false;
 var qr2png = require('qrcode');
-var Utils = require('./utils');
+const Utils = require('./utils');
 
-var methods = {};
+let methods = {};
 
-methods.StopAdvertising = function() {
+methods.StopAdvertising = function () {
     bleno.stopAdvertising();
     bleno.disconnect();
 };
 
-methods.startScan = function() {
+methods.startScan = function () {
     if (blenoPoweredOn === true) {
         bleno.startAdvertising('Bot Connected device', [systemInformationService.uuid]);
     }
 };
 
-methods.startAdvertising = function() {
+methods.startAdvertising = function () {
     let qrData = JSON.stringify({
         'deviceID': Utils.botID(),
         'makerID': Utils.makerID(),
@@ -28,22 +28,20 @@ methods.startAdvertising = function() {
     });
 
     qr2png.toFile('./qr.png', qrData, function (err) {
-      if (err) throw err;
+        if (err) throw err;
     });
 
     methods.startScan();
 };
 
-bleno.on('stateChange', function(state) {
-  console.log('Bot: on -> stateChange: ' + state);
-	blenoPoweredOn = (state === 'poweredOn');
+bleno.on('stateChange', function (state) {
+    console.log('Bot: on -> stateChange: ' + state);
+    blenoPoweredOn = (state === 'poweredOn');
     methods.startScan();
 });
 
-bleno.on('advertisingStart', function(error) {
-    console.log('Bot: on -> advertisingStart: ' +
-        (error ? 'error ' + error : 'success')
-    );
+bleno.on('advertisingStart', function (error) {
+    console.log('Bot: on -> advertisingStart: ' + (error ? 'error ' + error : 'success'));
 
     if (!error) {
         bleno.setServices([
