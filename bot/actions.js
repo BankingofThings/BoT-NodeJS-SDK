@@ -35,7 +35,7 @@ function performAction(action, success, value) {
         postData.value = value;
     }
 
-    Communication.post('actions', JSON.stringify(postData), function (success) {
+    Communication.post('actions', postData, function (success) {
         success(true);
     });
 }
