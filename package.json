@@ -1,7 +1,7 @@
 {
-  "name": "BankingOfThings",
+  "name": "bot-nodejs-sdk",
   "version": "1.0.0",
-  "main": "bot.js",
+  "main": "/lib/bot.js",
   "dependencies": {
     "async": "^2.6.0",
     "bleno": "^0.5.0",
