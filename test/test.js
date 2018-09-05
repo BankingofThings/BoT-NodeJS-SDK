@@ -10,6 +10,6 @@ describe('getMakerID()', function () {
         let makerID = Store.getMakerID();
 
         // 3. ASSERT
-        expect(makerID).to.be.equal(expectedMakerID);
+        expect(makerID).to.equal(expectedMakerID);
     });
 });
