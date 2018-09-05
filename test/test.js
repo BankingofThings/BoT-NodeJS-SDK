@@ -1,8 +1,8 @@
 const expect = require('chai').expect;
 const utils = require('../lib/utils.js');
 
-describe('getMakerID()', function () {
-    it('should give a makerID', function () {
+describe('getMakerID()', function() {
+    it('should give a makerID', function() {
         // 1. ARRANGE
         let expectedMakerID = undefined;
 
