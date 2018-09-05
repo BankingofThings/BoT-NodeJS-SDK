@@ -1,13 +1,13 @@
 const expect = require('chai').expect;
-const utils = require('../lib/utils.js');
+const Store = require('../lib/store.js');
 
-describe('getMakerID()', function() {
-    it('should give a makerID', function() {
+describe('getMakerID()', function () {
+    it('should give a makerID', function () {
         // 1. ARRANGE
         let expectedMakerID = undefined;
 
         // 2. ACT
-        let makerID = utils.getMakerID();
+        let makerID = Store.getMakerID();
 
         // 3. ASSERT
         expect(makerID).to.be.equal(expectedMakerID);
