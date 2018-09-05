@@ -1,4 +1,4 @@
-<img src="https://bankingofthings.io/img/github-header.png" style="margin:auto" alt="BoT">
+![Banking of Things Header](readme-header.png)
 
 # BoT-NodeJS-SDK
 
