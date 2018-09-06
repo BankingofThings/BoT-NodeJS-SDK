@@ -4,4 +4,4 @@ install: ; npm install
 
 tests: ; npm test
 
-server: ; node lib/bot.js $(makerID)
+server: ; node lib/app.js $(makerID)
