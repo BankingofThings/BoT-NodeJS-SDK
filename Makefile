@@ -1,4 +1,4 @@
-environment-debian: ; sudo ./install.sh
+environment-debian: ; sudo bin/install.sh
 
 install: ; npm install
 
