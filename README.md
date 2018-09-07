@@ -79,7 +79,7 @@ curl localhost:3001/actions
 
 ### Triggering actions
 ```bash
-curl -d '{"actionID":"YOUR_ACTION_ID"}' -H "Content-Type: application/json" -X POST http://localhost:3001/
+curl -d '{"actionID":"YOUR_ACTION_ID"}' -H "Content-Type: application/json" -X POST http://localhost:3001/actions
 ```
 
 
