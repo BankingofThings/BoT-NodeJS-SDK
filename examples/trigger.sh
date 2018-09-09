@@ -6,5 +6,5 @@ if [ $# -eq 0 ]
 fi
 
 echo "Triggering Action:"$1
-curl -H "Content-Type: application/json" -X POST -d '{"actionID": "'$1'", "value": "0"}' http://127.0.0.1:3001
+curl -H "Content-Type: application/json" -d '{"actionID": "'$1'", "value": "0"}' http://127.0.0.1:3001
 
