@@ -36,9 +36,10 @@ As for now, this SDK supports debian based environments. To setup your environme
 ```bash
 make environment-debian
 ```
+For development you can use macOS with Xcode installed.
 
 ### Installing dependencies
-To install dependencies and your debian environment run:
+To install dependencies run:
 ```bash 
 make install
 ```
