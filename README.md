@@ -45,12 +45,6 @@ make install
 ```
 
 
-## Running tests
-For now we do not have high test-coverage. You're free to make a PR to add them! To run the tests:
-```bash
-make test
-```
-
 
 ## Configuration
 On your first run, replace YOUR_MAKER_ID with the makerID from your BoT Account and run:
@@ -58,13 +52,11 @@ On your first run, replace YOUR_MAKER_ID with the makerID from your BoT Account 
 make server makerID=YOUR_MAKER_ID
 ```
 
-
 ## Running the server
 To run the server normally after you've configured it, simply run:
 ```bash
 make server
-``` 
-
+```
 
 ## Using the SDK
 
@@ -90,6 +82,11 @@ going fully open-source soon. We believe your input can help create a lively com
 of Things. We’ve already implemented much of the feedback given to us by community members and will continue to do so. 
 Join them by contributing to the SDK or by contributing to the documentation.
 
+## Running tests
+At the moment we do not have high test-coverage. You're free to make a PR to add tests! To run the tests:
+```bash
+make test
+```
 
 ## Community
 

@@ -22,8 +22,6 @@ wget -O - https://raw.githubusercontent.com/sdesalas/node-pi-zero/master/install
 
 sudo setcap cap_net_raw+eip $(eval readlink -f `which node`)
 
-make install
-
 echo "----------------------------------------"
 echo "|                 DONE                 |"
 echo "----------------------------------------"
