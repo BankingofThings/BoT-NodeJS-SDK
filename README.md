@@ -32,25 +32,11 @@ cd BoT-NodeJS-SDK
 ```
 
 ### Creating your environment
-As for now, this SDK supports debian based environments. To setup your environment, run:
+As for now, this SDK supports debian based environments. To setup your environment and install the dependencies, run:
 ```bash
 make environment-debian
 ```
 For development you can use macOS with Xcode installed.
-
-### Installing dependencies
-To install dependencies run:
-```bash 
-make install
-```
-
-
-## Running tests
-For now we do not have high test-coverage. You're free to make a PR to add them! To run the tests:
-```bash
-make test
-```
-
 
 ## Configuration
 On your first run, replace YOUR_MAKER_ID with the makerID from your BoT Account and run:
@@ -58,13 +44,17 @@ On your first run, replace YOUR_MAKER_ID with the makerID from your BoT Account 
 make server makerID=YOUR_MAKER_ID
 ```
 
-
 ## Running the server
 To run the server normally after you've configured it, simply run:
 ```bash
 make server
 ``` 
 
+## Running tests
+For now we do not have high test-coverage. You're free to make a PR to add them! To run the tests:
+```bash
+make test
+```
 
 ## Using the SDK
 
