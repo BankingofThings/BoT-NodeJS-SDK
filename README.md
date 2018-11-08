@@ -13,7 +13,7 @@ For more information, visit [bankingofthings.io](https://bankingofthings.io/).
 This SDK works on debian devices like Raspberry Pi or a regular Ubuntu.
 
 ## Getting Started
-Visit our official documentation on [docs.bankingofthings.io](http://docs.bankingofthings.io/) for a complete overview. 
+Visit our official documentation on [docs.bankingofthings.io](https://docs.bankingofthings.io/) for a complete overview. 
 The main steps are:
 - Setting up your device (e.g. a Raspberry Pi)
 - Installing the SDK
