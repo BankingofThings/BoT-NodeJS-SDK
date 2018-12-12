@@ -33,7 +33,7 @@ On your first run, replace YOUR_MAKER_ID with the makerID from your FINN Account
 make server makerID=YOUR_MAKER_ID
 
 Running the server
-To run the server normally after you've configured it, simply run:
+To run the server normally after you've configured it, simply run:<br/>
 make server Using the SDK
 
 Pairing your device<br/>
