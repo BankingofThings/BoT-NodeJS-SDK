@@ -16,7 +16,7 @@ Visit our official documentation on docs.bankingofthings.io for a complete overv
 
 # Cloning the repository
 Clone the repository on your device, for example with ssh, and enter the folder:<br/>
-`git clone` [BankingofThings/BoT-NodeJS-SDK](git@github.com:BankingofThings/BoT-NodeJS-SDK.git) <br/>
+`git clone` git@github.com:BankingofThings/BoT-NodeJS-SDK.git<br/>
 cd BoT-NodeJS-SDK
 
 Creating your environment
