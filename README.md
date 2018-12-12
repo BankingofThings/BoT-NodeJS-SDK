@@ -1,3 +1,5 @@
+![readme-header](readme-header.png)
+
 FINN enables your IoT devices to perform seamless autonomous payments on your behalf. For more information, visit us at [makethingsfinn.com](makethingsfinn.com).
 
 # Requirements
