@@ -6,17 +6,18 @@ This SDK works on Debian devices like Raspberry Pi or a regular Ubuntu.
 # Getting Started
 Visit our official documentation on docs.bankingofthings.io for a complete overview. The main steps are:
 
- Setting up your device (e.g. a Raspberry Pi)
- Installing the SDK
- Defining Actions on the portal
- Pairing the device with your phone
- Trigger actions on your device
- Check results in your dashboard
- Installation
+- Setting up your device (e.g. a Raspberry Pi)
+- Installing the SDK
+- Defining Actions on the portal
+- Pairing the device with your phone
+- Trigger actions on your device
+- Check results in your dashboard
+- Installation
 
 # Cloning the repository
 Clone the repository on your device, for example with ssh, and enter the folder:
-git clone git@github.com:BankingofThings/BoT-NodeJS-SDK.git cd BoT-NodeJS-SDK
+git clone [BankingofThings/BoT-NodeJS-SDK](git@github.com:BankingofThings/BoT-NodeJS-SDK.git) 
+cd BoT-NodeJS-SDK
 
 Creating your environment
 As for now, this SDK supports debian based environments. To setup your environment, run:
@@ -57,8 +58,8 @@ Slack is our main feedback channel for the SDK and documentation. Direct feedbac
 Use the feedback button on the portal.
 
 Meetups
-We also organize meetups, e.g. demo or hands-on workshops. Keep an eye on our meetup group for any events coming up soon. Here you will be able to see the FINN software in action and meet the team.  
-meetup.com/Amsterdam-ING-Banking-of-Things/
+We also organize meetups, e.g. demo or hands-on workshops. Keep an eye on our meetup group for any events coming up soon. Here you will be able to see the FINN software in action and meet the team.
+[Meetup/Amsterdam-ING-Banking-of-Things](meetup.com/Amsterdam-ING-Banking-of-Things/).
  
 # About FINN
 After winning the ING Innovation Bootcamp in 2017, FINN is now part of the ING Accelerator Program. Our aim is to become the new Internet of Things (IoT) payment standard that enables service-led business models. FINN offers safe, autonomous transactions for smart devices.
