@@ -29,7 +29,7 @@ sudo apt-get install git
 ## Cloning the repository
 Clone the repository on your device, for example with ssh, and enter the folder:
 ```bash
-git clone git@github.com:BankingofThings/BoT-NodeJS-SDK.git
+git clone https://github.com/BankingofThings/BoT-NodeJS-SDK.git
 cd BoT-NodeJS-SDK
 ```
 
