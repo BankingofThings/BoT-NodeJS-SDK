@@ -8,4 +8,4 @@ tests: ; npm test
 
 server: ; node lib/app.js $(makerID)
 
-multipairserver: ; node lib/app.js multipair $(aid)
+config: ; node lib/config.js $(key) $(value)
