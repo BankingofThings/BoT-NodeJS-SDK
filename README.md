@@ -1,5 +1,7 @@
 ![readme-header](readme-header.png)
 
+[![Build Status](https://travis-ci.com/BankingofThings/BoT-NodeJS-SDK.svg?branch=master)](https://travis-ci.com/BankingofThings/BoT-NodeJS-SDK)
+
 FINN enables your IoT devices to perform seamless autonomous payments on your behalf. 
 For more information, visit us at [makethingsfinn.com](makethingsfinn.com)
 
@@ -7,15 +9,17 @@ For more information, visit us at [makethingsfinn.com](makethingsfinn.com)
 This SDK works on Debian devices like Raspberry Pi or a regular Ubuntu.
 
 # Getting Started
-Visit our [official documentation](https://docs.bankingofthings.io) for a complete overview. The main steps are:
+Visit our [official documentation](https://docs.bankingofthings.io) for a complete overview. 
+The main steps are:
 
 - Setting up your device (e.g. a Raspberry Pi)
 - Installing the SDK
-- Defining Actions on the portal
+- Defining Actions on the [Maker Portal](https://maker.bankingofthings.io/)
 - Pairing the device with your phone
 - Trigger actions on your device
-- Check results in your dashboard
-- Installation
+- Check results in the [Maker Portal > Dashboard](https://maker.bankingofthings.io/)
+
+# Installation
 
 ## Setting up your device
 If you're on a Raspberry Pi 3, you can download [Raspbian Stretch Lite](https://www.raspberrypi.org/downloads/raspbian/) 
