@@ -1,35 +1,30 @@
 #!/bin/bash
-OUTPUT="/tmp/input.txt"
->$OUTPUT
-trap "rm $OUTPUT; exit" SIGHUP SIGINT SIGTERM
-TITLE="FINN - Banking of Things"
-SUBTITLE="Configure SDK"
-MULTIPAIR=0
+
 cd ..
 DIR=$(pwd)
-echo $DIR
 
-dialog --title "$TITLE" --backtitle "$SUBTITLE" --inputbox "Enter your makerID " 8 60 2>$OUTPUT
-respose=$?	
-makerID=$(<$OUTPUT)
-cd $DIR && make config key=makerID value=$makerID
+echo -n "Enter your makerID: " 
+read makerID
+LEN=$(echo ${#makerID})
 
-
-dialog --title "$TITLE" --backtitle "$SUBTITLE" --yesno "Are you building a multi pairable device?" 8 60 2>$OUTPUT
-response=$?
-case $response in
-   0) MULTIPAIR=1;;
-   1) MULTIPAIR=0;;
-   255) echo "[ESC] key pressed.";;
-esac
-
-if [ "$MULTIPAIR" -gt 0 ]
-then
-	dialog --title "$TITLE" --backtitle "$SUBTITLE" --inputbox "Enter your alternativeID name " 8 60 2>$OUTPUT
-	respose=$?	
-	displayname=$(<$OUTPUT)
-	pwd
-	cd $DIR && make config key=multipair value=multipair 
-	pwd
-	cd $DIR && make config key=aid value=$displayname 
+if [ $LEN -lt 36 ]; then
+        echo "Invalid makerID length, get your makerID at maker.bankingofthings.io"
+        exit 1
+else
+       cd $DIR && make config key=makerID value=$makerID
 fi
+
+
+read -p "Are you building a multi pairable device? [no/yes]: "  multipair
+multipair=${multipair:-no}
+
+echo $multipair
+
+if [ "${multipair}" == "yes" ] ; then
+	echo -n "Enter your alternativeID: " 
+	read alternativeID
+	cd $DIR && make config key=multipair value=multipair
+	cd $DIR && make config key=aid value=$alternativeID
+fi
+
+echo Setup complete.
