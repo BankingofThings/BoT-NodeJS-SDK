@@ -49,12 +49,24 @@ To install dependencies run:
 ```bash
 make install
 ```
-
 ## Configuration
-On your first run, replace YOUR_MAKER_ID with the makerID from your FINN Account and run:
+Before your first run, start the configuration tool.
 ```bash
-make server makerID=YOUR_MAKER_ID
+cd bin
+./configure.sh
 ```
+### Enter your MakerID
+Copy paste your uniuqe MakerID from the FINN portal. You can find it under "Account"
+
+### Multi-pairable device (yes/no)
+When your IoT device is meant to be used by more than one user say "yes" to this option.
+This will result in an IoT device that is usable for all FINN app users.
+If your IoT device meant to have one owner then say "no" to this option
+
+### Enter your alternativeID
+When configuring a Multi-pairable device we have to set an alternativeID.
+This alternativeID needs to be filled-in during the pairing process in the FINN Companion app.
+Examples can be a "loyalty card number" or the "license plate" of your car.
 
 ## Using the SDK
 
