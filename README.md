@@ -56,7 +56,7 @@ cd bin
 ./configure.sh
 ```
 ### Enter your MakerID
-Copy paste your uniuqe MakerID from the FINN portal. You can find it under "Account"
+Copy paste your unique MakerID from the FINN portal. You can find it under "Account"
 
 ### Multi-pairable device (yes/no)
 When your IoT device is meant to be used by more than one user say "yes" to this option.
