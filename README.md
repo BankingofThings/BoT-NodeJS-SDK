@@ -90,6 +90,10 @@ curl localhost:3001/actions
 ```bash
 curl -d '{"actionID":"YOUR_ACTION_ID"}' -H "Content-Type: application/json" http://localhost:3001/actions
 ```
+#### Triggering Multipairing actions
+```bash
+curl -d '{"actionID":"YOUR_ACTION_ID", "alternativeID":"ID"}' -H "Content-Type: application/json" http://localhost:3001/actions
+```
 
 # Contributing
 Any improvement to the FINN SDK are very much welcome! Our software is open-source and we believe your input can help create a lively community and the best version of FINN. We’ve already implemented much of the feedback given to us by community members and will continue to do so. Join them by contributing to the SDK or by contributing to the documentation.
