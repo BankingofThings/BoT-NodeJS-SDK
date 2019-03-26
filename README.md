@@ -1,5 +1,7 @@
 ![readme-header](readme-header.png)
 
+[![Build Status](https://travis-ci.com/BankingofThings/BoT-NodeJS-SDK.svg?branch=master)](https://travis-ci.com/BankingofThings/BoT-NodeJS-SDK)
+
 FINN enables your IoT devices to perform seamless autonomous payments on your behalf. 
 For more information, visit us at [makethingsfinn.com](makethingsfinn.com)
 
@@ -7,15 +9,17 @@ For more information, visit us at [makethingsfinn.com](makethingsfinn.com)
 This SDK works on Debian devices like Raspberry Pi or a regular Ubuntu.
 
 # Getting Started
-Visit our [official documentation](https://docs.bankingofthings.io) for a complete overview. The main steps are:
+Visit our [official documentation](https://docs.bankingofthings.io) for a complete overview. 
+The main steps are:
 
 - Setting up your device (e.g. a Raspberry Pi)
 - Installing the SDK
-- Defining Actions on the portal
+- Defining Actions on the [Maker Portal](https://maker.bankingofthings.io/)
 - Pairing the device with your phone
 - Trigger actions on your device
-- Check results in your dashboard
-- Installation
+- Check results in the [Maker Portal > Dashboard](https://maker.bankingofthings.io/)
+
+# Installation
 
 ## Setting up your device
 If you're on a Raspberry Pi 3, you can download [Raspbian Stretch Lite](https://www.raspberrypi.org/downloads/raspbian/) 
@@ -45,12 +49,24 @@ To install dependencies run:
 ```bash
 make install
 ```
-
 ## Configuration
-On your first run, replace YOUR_MAKER_ID with the makerID from your FINN Account and run:
+Before your first run, start the configuration tool.
 ```bash
-make server makerID=YOUR_MAKER_ID
+cd bin
+./configure.sh
 ```
+### Enter your MakerID
+Copy paste your unique MakerID from the FINN portal. You can find it under "Account"
+
+### Multi-pairable device (yes/no)
+When your IoT device is meant to be used by more than one user say "yes" to this option.
+This will result in an IoT device that is usable for all FINN app users.
+If your IoT device meant to have one owner then say "no" to this option
+
+### Enter your alternativeID
+When configuring a Multi-pairable device we have to set an alternativeID.
+This alternativeID needs to be filled-in during the pairing process in the FINN Companion app.
+Examples can be a "loyalty card number" or the "license plate" of your car.
 
 ## Using the SDK
 
@@ -73,6 +89,10 @@ curl localhost:3001/actions
 ### Triggering actions
 ```bash
 curl -d '{"actionID":"YOUR_ACTION_ID"}' -H "Content-Type: application/json" http://localhost:3001/actions
+```
+#### Triggering Multipairing actions
+```bash
+curl -d '{"actionID":"YOUR_ACTION_ID", "alternativeID":"ID"}' -H "Content-Type: application/json" http://localhost:3001/actions
 ```
 
 # Contributing
