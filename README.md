@@ -53,7 +53,7 @@ make install
 Before your first run, start the configuration tool.
 ```bash
 cd bin
-./configure.sh
+./config.sh
 ```
 ### Enter your MakerID
 Copy paste your unique MakerID from the FINN portal. You can find it under "Account"
