@@ -6,7 +6,7 @@ FINN enables your IoT devices to perform seamless autonomous payments on your be
 For more information, visit us at [makethingsfinn.com](https://makethingsfinn.com)
 
 # Requirements
-This SDK works best on devices with a debian-based distrition. like Raspberry Pi or a regular Ubuntu. To follow this tutorial you'll need:
+This SDK works best on devices with a debian-based distribution. like Raspberry Pi or a regular Ubuntu. To follow this tutorial you'll need:
 - A device with a debian distribution OS, such as Raspberry Pi with Raspbian. For further instructions on how to install, check on [Raspberry Pi official documentation](https://www.raspberrypi.org/documentation/installation/installing-images/README.md). Or a computer with the following tools:
     - A Unix system (Linux - preferrably Debian based or Mac)
     - NodeJS 8.16.0. You can find the version suitable for your device [in the official download page](https://nodejs.org/dist/latest-v8.x/).
@@ -53,7 +53,7 @@ sudo apt-get install git
 
 ### For Mac Users
 
-Note: Mac usage is for testing purposes only and some perifferals might not work properly.
+Note: Mac usage is for testing purposes only and some peripheerals might not work properly.
 
 Check your local node installation by opening a Terminal and writting the following command.
 ```bash
@@ -66,7 +66,7 @@ Make sure you have git installed:
 ```bash
 git --version
 ```
-In case you get an error, you need to install git in your computer. We recomend using [homebrew](https://brew.sh/
+In case you get an error, you need to install git in your computer. We recommend using [homebrew](https://brew.sh/
 ) for that. Once have homebrew installed, you can install git as follows:
 ```bash
 brew install git
@@ -94,7 +94,7 @@ As for now, this SDK supports debian based environments. To setup your environme
 ```bash
 make environment-debian
 ```
-For development wit a Mac, you can skip this step. Make sure you use a macOS with Xcode installed.
+For development wit a Mac, you can skip this step. Make sure you use macOS with Xcode installed.
 
 ### Installing dependencies
 To install dependencies run:
@@ -137,13 +137,13 @@ This makes your device a server with a few web endpoints that can be accessed th
 We are using curl in the examples below.
 
 ### Pairing your device
-You can get infor for pairing by making a get call to the [/pairing](#get-pairing-info) endpoint
+You can get pairing information by making a get call to the [/pairing](#get-pairing-info) endpoint
 ```bash
 curl localhost:3001/pairing
 ```
 
 ### Retrieving actions
-You can see available actions that configured in FINN Maker Portal by making a get call to the [/actions](#get-actions-info) endpoint
+You can see available actions that have been configured in FINN Maker Portal by making a get call to the [/actions](#get-actions-info) endpoint
 ```bash
 curl localhost:3001/actions
 ```
