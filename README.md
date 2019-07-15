@@ -53,7 +53,7 @@ sudo apt-get install git
 
 ### For Mac Users
 
-Note: Mac usage is for testing purposes only and some peripheerals might not work properly.
+Note: Mac usage is for testing purposes only and some peripherals might not work properly.
 
 Check your local node installation by opening a Terminal and writting the following command.
 ```bash
@@ -143,7 +143,7 @@ curl localhost:3001/pairing
 ```
 
 ### Retrieving actions
-You can see available actions that have been configured in FINN Maker Portal by making a get call to the [/actions](#get-actions-info) endpoint
+You can see available actions that have been configured in the FINN Maker Portal by making a get call to the [/actions](#get-actions-info) endpoint
 ```bash
 curl localhost:3001/actions
 ```
@@ -154,7 +154,7 @@ You can manually trigger an action by sending a post call to the [/actions](#tri
 curl -d '{"actionID":"YOUR_ACTION_ID"}' -H "Content-Type: application/json" http://localhost:3001/actions
 ```
 #### Triggering Multipairing actions
-If your device is set to be a multipaired device, you need to specify the alternativeID in your request body
+If your device is set to be a multipairable device, you need to specify the alternativeID in your request body
 ```bash
 curl -d '{"actionID":"YOUR_ACTION_ID", "alternativeID":"ID"}' -H "Content-Type: application/json" http://localhost:3001/actions
 ```
