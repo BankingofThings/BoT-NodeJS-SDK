@@ -19,7 +19,7 @@ Visit our [official documentation](https://docs.bankingofthings.io) for a comple
 The main steps are:
 
 - [Setting up your device](#setting-up-your-device)
-    - [For Raspberry Pi 3 Users](#for-respberry-pi-3-users)
+    - [For Raspberry Pi Users](#for-respberry-pi-users)
     - [For Mac Users](#for-mac-users)
 - [Installing the SDK](#installing-the-sdk)
 
@@ -27,9 +27,9 @@ The main steps are:
 
 ## Setting up your device
 
-### For Raspberry Pi 3 Users
+### For Raspberry Pi Users
 
-If you're on a Raspberry Pi 3, you can download [Raspbian Stretch Lite](https://www.raspberrypi.org/downloads/raspbian/)
+If you're on a Raspberry Pi, you can download [Raspbian Buster Lite](https://www.raspberrypi.org/downloads/raspbian/)
 and flash it with [Apple Pi Baker](https://www.pibakery.org/download.html)
 
 Check your local node installation.
