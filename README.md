@@ -2,71 +2,127 @@
 
 [![Build Status](https://travis-ci.com/BankingofThings/BoT-NodeJS-SDK.svg?branch=master)](https://travis-ci.com/BankingofThings/BoT-NodeJS-SDK)
 
-FINN enables your IoT devices to perform seamless autonomous payments on your behalf. 
-For more information, visit us at [makethingsfinn.com](makethingsfinn.com)
+FINN enables your IoT devices to perform seamless autonomous payments on your behalf.
+For more information, visit us at [makethingsfinn.com](https://makethingsfinn.com)
 
 # Requirements
-This SDK works on Debian devices like Raspberry Pi or a regular Ubuntu.
+This SDK works best on devices with a debian-based distribution. like Raspberry Pi or a regular Ubuntu. To follow this tutorial you'll need:
+- A device with a debian distribution OS, such as Raspberry Pi with Raspbian. For further instructions on how to install, check on [Raspberry Pi official documentation](https://www.raspberrypi.org/documentation/installation/installing-images/README.md). Or a computer with the following tools:
+    - A Unix system (Linux - preferrably Debian based or Mac)
+    - NodeJS 8.16.0. You can find the version suitable for your device [in the official download page](https://nodejs.org/dist/latest-v8.x/).
+    - Git
+- An iOS or Android device with FINN - Banking of Things App. Find it on the [Appstore](https://itunes.apple.com/nl/app/finn-banking-of-things/id1284724116) or in the [Playstore](https://play.google.com/store/apps/details?id=io.bankingofthings.bot&gl=NL)
+- A Computer with a web browser
 
 # Getting Started
-Visit our [official documentation](https://docs.bankingofthings.io) for a complete overview. 
+Visit our [official documentation](https://docs.bankingofthings.io) for a complete overview.
 The main steps are:
 
-- Setting up your device (e.g. a Raspberry Pi)
-- Installing the SDK
-- Defining Actions on the [Maker Portal](https://maker.bankingofthings.io/)
-- Pairing the device with your phone
-- Trigger actions on your device
-- Check results in the [Maker Portal > Dashboard](https://maker.bankingofthings.io/)
+- [Setting up your device](#setting-up-your-device)
+    - [For Raspberry Pi 3 Users](#for-respberry-pi-3-users)
+    - [For Mac Users](#for-mac-users)
+- [Installing the SDK](#installing-the-sdk)
 
 # Installation
 
 ## Setting up your device
-If you're on a Raspberry Pi 3, you can download [Raspbian Stretch Lite](https://www.raspberrypi.org/downloads/raspbian/) 
+
+### For Raspberry Pi 3 Users
+
+If you're on a Raspberry Pi 3, you can download [Raspbian Stretch Lite](https://www.raspberrypi.org/downloads/raspbian/)
 and flash it with [Apple Pi Baker](https://www.pibakery.org/download.html)
 
-Make sure you have internet access and install git:
+Check your local node installation.
+```bash
+node -v
+```
+
+If your node version is different, make sure to install the right version:
+
+```bash
+curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+sudo apt-get update
+sudo apt-get install nodejs
+sudo apt-get install npm
+```
+
+Now, install git:
 ```bash
 sudo apt-get install git
 ```
 
-## Cloning the repository
-Clone the repository on your device, for example with ssh, and enter the folder:
+### For Mac Users
+
+Note: Mac usage is for testing purposes only and some peripherals might not work properly.
+
+Check your local node installation by opening a Terminal and writting the following command.
 ```bash
-git clone https://github.com/BankingofThings/BoT-NodeJS-SDK.git
-cd BoT-NodeJS-SDK
+node -v
 ```
 
-## Creating your environment
+If your node version is different than this one we suggest using nvm to go back and forth on different node versions. For more information, Visit the [documentation](https://github.com/nvm-sh/nvm#installation-and-update).
+
+Make sure you have git installed:
+```bash
+git --version
+```
+In case you get an error, you need to install git in your computer. We recommend using [homebrew](https://brew.sh/
+) for that. Once have homebrew installed, you can install git as follows:
+```bash
+brew install git
+```
+
+Install command line tools
+```bash
+xcode-select --install
+```
+
+Now your device is set and ready to install the SDK.
+
+---
+
+## Installing the SDK
+
+### Clone the repository
+Clone the repository on your device, for example with ssh, and enter the folder:
+```bash
+git clone https://github.com/BankingofThings/BoT-NodeJS-SDK.git && cd BoT-NodeJS-SDK
+```
+
+### Creating your environment
 As for now, this SDK supports debian based environments. To setup your environment, run:
 ```bash
 make environment-debian
 ```
-For development you can use macOS with Xcode installed.
+For development wit a Mac, you can skip this step. Make sure you use macOS with Xcode installed.
 
-## Installing dependencies
+### Installing dependencies
 To install dependencies run:
 ```bash
 make install
 ```
-## Configuration
-Before your first run, start the configuration tool.
-```bash
-cd bin
-./config.sh
-```
-### Enter your MakerID
-Copy paste your unique MakerID from the FINN portal. You can find it under "Account"
+---
 
-### Multi-pairable device (yes/no)
+### Configuration
+Before your first run, start the configuration tool. It will ask for a few things to configure:
+```bash
+sh bin/config.sh
+```
+
+#### Enter your MakerID
+Copy paste your unique MakerID from the account page in the FINN [Maker Portal](https://maker.bankingofthings.io/account).
+
+#### Multi-pairable device (yes/no)
 When your IoT device is meant to be used by more than one user say "yes" to this option.
 This will result in an IoT device that is usable for all FINN app users.
 If your IoT device meant to have one owner then say "no" to this option
 
-### Enter your alternativeID
+#### Enter your alternativeID
 When configuring a Multi-pairable device we have to set an alternativeID.
 This alternativeID needs to be filled-in during the pairing process in the FINN Companion app.
 Examples can be a "loyalty card number" or the "license plate" of your car.
+
+---
 
 ## Using the SDK
 
@@ -76,25 +132,110 @@ To run the server normally after you've configured it, simply run:
 make server
 ```
 
+This makes your device a server with a few web endpoints that can be accessed through any web client.
+
+We are using curl in the examples below.
+
 ### Pairing your device
+You can get pairing information by making a get call to the [/pairing](#get-pairing-info) endpoint
 ```bash
 curl localhost:3001/pairing
 ```
 
 ### Retrieving actions
+You can see available actions that have been configured in the FINN Maker Portal by making a get call to the [/actions](#get-actions-info) endpoint
 ```bash
 curl localhost:3001/actions
 ```
 
 ### Triggering actions
+You can manually trigger an action by sending a post call to the [/actions](#trigger-an-action) endpoint
 ```bash
 curl -d '{"actionID":"YOUR_ACTION_ID"}' -H "Content-Type: application/json" http://localhost:3001/actions
 ```
 #### Triggering Multipairing actions
+If your device is set to be a multipairable device, you need to specify the alternativeID in your request body
 ```bash
 curl -d '{"actionID":"YOUR_ACTION_ID", "alternativeID":"ID"}' -H "Content-Type: application/json" http://localhost:3001/actions
 ```
 
+# SDK server API Reference
+
+## Get Pairing info
+Get information about device for pairing
+
+**URL**: `/pairing`
+
+**Method**: `GET`
+
+### Success Response
+
+**Code**: `200`
+
+**Content**:
+```json
+{
+    "deviceID": "The-device-ID",
+    "makerID": "Find-Maker-ID-in-maker-portal",
+    "publicKey": "the-public-key"
+}
+```
+
+## Get Actions info
+
+**URL**: `/actions`
+
+**Method**: `GET`
+
+**Response Type**
+
+### Success Response
+--
+**Code**: `200`
+
+**Content**:
+An Array of objects with a list of all the actions specified in the Maker Portal
+```json
+[
+    {
+        "actionID": "the-action-id",
+        "frequency": "always",
+        "info": "when the event triggers",
+        "date_created": "2019-01-01 12:12:12 +0000",
+        "metadata": "{data: [\"info\", \"here\"]}",
+        "actionName": "event triggers",
+        "makerID": "Find-Maker-ID-in-maker-portal",
+        "type": "push"
+    },
+    { ... },
+    { ... }
+]
+```
+
+## Trigger an Action
+
+**URL**: `/actions`
+
+**Method**: `POST`
+
+**Response Type**: `Application/json`
+
+**Payload**:
+```json
+{
+    "actionID": "Find-action-ID-in-maker-portal",
+    //optional:
+    "alternativeID" "alternative-ID-for-multi-paired-devices"
+}
+```
+
+### Success Response
+--
+**Code**: `200`
+
+**Content**: ` `
+
+---
 # Contributing
 Any improvement to the FINN SDK are very much welcome! Our software is open-source and we believe your input can help create a lively community and the best version of FINN. We’ve already implemented much of the feedback given to us by community members and will continue to do so. Join them by contributing to the SDK or by contributing to the documentation.
 
@@ -112,8 +253,9 @@ Slack is our main feedback channel for the SDK and documentation. Join our [Slac
 ## Meetups
 We also organize meetups, e.g. demo or hands-on workshops. Keep an eye on our meetup group for any events coming up soon. Here you will be able to see the FINN software in action and meet the team.<br/>
 [Meetup/Amsterdam-ING-Banking-of-Things](meetup.com/Amsterdam-ING-Banking-of-Things/).
- 
+
 # About FINN
 After winning the ING Innovation Bootcamp in 2017, FINN is now part of the ING Accelerator Program. Our aim is to become the new Internet of Things (IoT) payment standard that enables service-led business models. FINN offers safe, autonomous transactions for smart devices.
 We believe our software offers tremendous business opportunities. However, at heart, we are enthusiasts. Every member of our team has a passion for innovation. That’s why we love working on FINN.
 [makethingsfinn.com](makethingsfinn.com)
+
