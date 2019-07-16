@@ -62,16 +62,6 @@ node -v
 
 If your node version is different than this one we suggest using nvm to go back and forth on different node versions. For more information, Visit the [documentation](https://github.com/nvm-sh/nvm#installation-and-update).
 
-Make sure you have git installed:
-```bash
-git --version
-```
-In case you get an error, you need to install git in your computer. We recommend using [homebrew](https://brew.sh/
-) for that. Once have homebrew installed, you can install git as follows:
-```bash
-brew install git
-```
-
 Install command line tools
 ```bash
 xcode-select --install
