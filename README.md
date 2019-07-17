@@ -112,6 +112,13 @@ When configuring a Multi-pairable device we have to set an alternativeID.
 This alternativeID needs to be filled-in during the pairing process in the FINN Companion app.
 Examples can be a "loyalty card number" or the "license plate" of your car.
 
+
+#### Reset
+To reset the SDK to its default configuration type:
+```bash
+make reset
+```
+
 ---
 
 ## Using the SDK
