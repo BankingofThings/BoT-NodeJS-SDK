@@ -1,15 +1,15 @@
 const expect = require('chai').expect;
 const Store = require('../lib/store.js');
 
-describe('getMakerID()', function () {
-    it('should give a makerID', function () {
+describe('getProductID()', function () {
+    it('should give a productID', function () {
         // 1. ARRANGE
-        let expectedMakerID = undefined;
+        let expectedProductID = undefined;
 
         // 2. ACT
-        let makerID = Store.getMakerID();
+        let productID = Store.getProductID();
 
         // 3. ASSERT
-        expect(makerID).to.equal(expectedMakerID);
+        expect(productID).to.equal(expectedProductID);
     });
 });

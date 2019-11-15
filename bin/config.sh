@@ -3,15 +3,15 @@
 cd ..
 DIR=$(pwd)
 
-echo -n "Enter your makerID: " 
-read makerID
-LEN=$(echo ${#makerID})
+echo -n "Enter your productID: "
+read productID
+LEN=$(echo ${#productID})
 
 if [ $LEN -lt 36 ]; then
-        echo "Invalid makerID length, get your makerID at maker.bankingofthings.io"
+        echo "Invalid productID length, get your productID at maker.bankingofthings.io"
         exit 1
 else
-       cd $DIR && make config key=makerID value=$makerID
+       cd $DIR && make config key=productID value=$productID
 fi
 
 
@@ -25,7 +25,7 @@ if [ "${multipair}" == "no" ] ; then
 fi
 
 if [ "${multipair}" == "yes" ] ; then
-	echo -n "Enter your alternativeID: " 
+	echo -n "Enter your alternativeID: "
 	read alternativeID
 	cd $DIR && make config key=aid value=$alternativeID
 	cd $DIR && make config key=multipair value=multipair

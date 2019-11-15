@@ -6,6 +6,6 @@ reset: ; node lib/reset.js
 
 tests: ; npm test
 
-server: ; node lib/app.js $(makerID)
+server: ; node lib/app.js $(productID)
 
 config: ; node lib/config.js $(key) $(value)
