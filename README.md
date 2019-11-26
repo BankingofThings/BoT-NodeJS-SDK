@@ -99,8 +99,10 @@ Before your first run, start the configuration tool. It will ask for a few thing
 sh bin/config.sh
 ```
 
-#### Enter your productID
+#### Enter your productID (or the deprecated makerID)
 Copy paste your unique productID from your product page in the FINN [Maker Portal](https://maker.bankingofthings.io).
+
+For makerID, you can use the `makerID` from the account page.
 
 #### Multi-pairable device (yes/no)
 When your IoT device is meant to be used by more than one user say "yes" to this option.
@@ -173,7 +175,7 @@ Get information about device for pairing
 ```json
 {
     "deviceID": "The-device-ID",
-    "productID": "Find-Product-ID-in-maker-portal",
+    "makerID": "Find-Maker-or-Product-ID-in-maker-portal",
     "publicKey": "the-public-key"
 }
 ```
@@ -201,7 +203,7 @@ An Array of objects with a list of all the actions specified for your product in
         "date_created": "2019-01-01 12:12:12 +0000",
         "metadata": "{data: [\"info\", \"here\"]}",
         "actionName": "event triggers",
-        "productID": "Find-Product-ID-in-maker-portal",
+        "makerID": "Find-Maker-or-Product-ID-in-maker-portal",
         "type": "push"
     },
     { ... },
