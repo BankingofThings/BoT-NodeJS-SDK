@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#cd ..
 DIR=$(pwd)
 
 echo -n "Enter your makerID or productID: "
