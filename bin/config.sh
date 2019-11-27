@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ..
+#cd ..
 DIR=$(pwd)
 
 echo -n "Enter your makerID or productID: "
@@ -20,11 +20,11 @@ multipair=${multipair:-no}
 
 echo $multipair
 
-if [ "${multipair}" == "no" ] ; then
+if [ "${multipair}" = "no" ] ; then
 	cd $DIR && make config key=standalone value=standalone
 fi
 
-if [ "${multipair}" == "yes" ] ; then
+if [ "${multipair}" = "yes" ] ; then
 	echo -n "Enter your alternativeID: "
 	read alternativeID
 	cd $DIR && make config key=aid value=$alternativeID
