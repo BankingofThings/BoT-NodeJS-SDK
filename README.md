@@ -5,6 +5,15 @@
 FINN enables your IoT devices to perform seamless autonomous payments on your behalf.
 For more information, visit us at [makethingsfinn.com](https://makethingsfinn.com)
 
+# Supported Features
+   | Sl. No        | SDK Feature                                | Status      | Remarks |
+   | :-----------: |:-------------------------------------------| :-----------| :-------|
+   |        1      | Pairing through Bluetooth Low Energy (BLE) | :thumbsup: | Supported with iOS and Android Mobile Applications |
+   |        2      | Pairing through QR Code                    | :thumbsup: | Supported only in Console mode for device to be paired for both iOS and Android Mobile Applications|
+   |        3      | Secured HTTP with BoT Service              | :thumbsup: | Supported for all interactions with backend server |
+   |        4      | Logging                                    | :thumbsup: | Console Logging is implemented|
+   |        5      | Offline Actions                            | :thumbsdown: | Helps to persist the autonomous payments on the device when there is no internet connectivity available. The saved offline actions get completed when the next action trigger happens and internet connectivity is available. This feature is in plan for implementation.|
+   
 # Requirements
 This SDK works best on devices with a debian-based distribution. like Raspberry Pi or a regular Ubuntu. To follow this tutorial you'll need:
 - A device with a debian distribution OS, such as Raspberry Pi with Raspbian. For further instructions on how to install, check on [Raspberry Pi official documentation](https://www.raspberrypi.org/documentation/installation/installing-images/README.md). Or a computer with the following tools:
