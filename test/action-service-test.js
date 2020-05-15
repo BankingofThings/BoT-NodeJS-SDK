@@ -74,7 +74,7 @@ describe('Trigger action which is not part of given ProductID', function () {
     });
 });
 
-describe('Trigger action which part of given ProductID but not activated for device', function () {
+describe('Trigger action which is not activated for device', function () {
     it('should return 400 with status Not-OK', function () {
       //This test has to be run on device configured with correct ProductID,
       //DeviceID and ActionID.

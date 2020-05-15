@@ -51,7 +51,8 @@ describe('getPairingStatus for not paired device', function () {
 
 describe('pollPairingStatus for not paired device', function () {
     it('should return 206 with status as false', function () {
-      //Comment below line to run this unit as it tries for multiple attempts for polling
+      //Comment below line to run this unit as it tries for
+      //multiple attempts for polling
       this.skip();
       //Set MakerID and deviceID to some UUID strings
       let MakerOrProductID = "3097b563-078f-4980-b58d-68d6e14d68fd";
@@ -101,7 +102,8 @@ describe('pollPairingStatus for already paired device', function () {
 
 describe('Run pairing for not paired device', function () {
     it('should remain device state as NEW', function () {
-      //Comment below line to run this unit as it tries for multiple attempts for polling
+      //Comment below line to run this unit as it tries for
+      //multiple attempts for polling
       this.skip();
       //Set MakerID and deviceID to some UUID strings
       let MakerOrProductID = "3097b563-078f-4980-b58d-68d6e14d68fd";
@@ -111,7 +113,7 @@ describe('Run pairing for not paired device', function () {
       Store.setDeviceStatus(DeviceStatus.NEW);
 
       //Invoke Pairing Service Run
-      let pairResult = PairingService.run();
+      PairingService.run();
 
       //Device state remains as NEW
       chai.assert.equal(Store.getDeviceStatus(), DeviceStatus.NEW);
@@ -128,7 +130,7 @@ describe('Run pairing for already paired device', function () {
       Store.setDeviceStatus(DeviceStatus.NEW);
 
       //Invoke Pairing Service Run
-      let pairResult = PairingService.run();
+      PairingService.run();
 
       //Device state should be changed to PAIRED after retrieving pair status
       setTimeout(() => {  chai.assert.equal(Store.getDeviceStatus(), DeviceStatus.PAIRED) }, 4000);

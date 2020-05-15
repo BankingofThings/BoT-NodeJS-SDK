@@ -1,7 +1,6 @@
 const chai = require('chai');
 const bot = require("../lib/bot-service.js")
 const Store = require('../lib/store.js');
-const KeyGenerator = require('../lib/key-generator');
 
 describe('get (/)', function () {
     it('should return makerID error', function () {
@@ -14,11 +13,11 @@ describe('get (/)', function () {
       let getResult = bot.get("/")
 
       //assertions
-      let expectedErrorMessage = '"value" required in setHeader("makerID", value)'
+      let expectedMessage = '"value" required in setHeader("makerID", value)'
       getResult.then(function(data) {
         chai.assert.fail(data);
       }, function(error) {
-        chai.assert.equal(error.message, expectedErrorMessage);
+        chai.assert.equal(error.message, expectedMessage);
       });
     });
 });
@@ -37,11 +36,11 @@ describe('get (/)', function () {
       let getResult = bot.get("/")
 
       //assertions
-      let expectedErrorMessage = '"value" required in setHeader("deviceID", value)'
+      let expectedMessage = '"value" required in setHeader("deviceID", value)'
       getResult.then(function(data) {
         chai.assert.fail(data);
       }, function(error) {
-        chai.assert.equal(error.message, expectedErrorMessage);
+        chai.assert.equal(error.message, expectedMessage);
       });
     });
 });

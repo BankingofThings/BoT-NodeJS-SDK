@@ -1,7 +1,6 @@
 const chai = require('chai');
 const ActivationService = require('../lib/activation-service.js');
 const Store = require('../lib/store.js');
-const DeviceStatus = require('../lib/device-status');
 
 describe('Request activation for not existing device', function () {
     it('should return 404 Not found', function () {
@@ -33,10 +32,6 @@ describe('Request activation for already paired device', function () {
       //DeviceID.
       this.skip();
 
-      //Set MakerID and deviceID to correct UUID strings
-      let MakerOrProductID = "D49B5D33-348B-470F-89A4-265313D166CE";
-      let deviceID = "ce4f57f1-0379-49f1-b23a-2e198f7c17a1";
-
       //Invoke send activation
       let activationResult = ActivationService.sendActivation();
 
@@ -55,10 +50,6 @@ describe('Poll activation status for already paired device', function () {
       //This test has to be run on device configured with correct ProductID,
       //DeviceID.
       this.skip();
-
-      //Set MakerID and deviceID to correct UUID strings
-      let MakerOrProductID = "D49B5D33-348B-470F-89A4-265313D166CE";
-      let deviceID = "ce4f57f1-0379-49f1-b23a-2e198f7c17a1";
 
       //Invoke poll activation
       let activationResult = ActivationService.pollActivation();
