@@ -25,6 +25,9 @@ describe('getActions for already paired device', function () {
 
 describe('Trigger activated action with paired device', function () {
     it('should return status OK', function () {
+      //This test has to be run on device configured with correct ProductID,
+      //DeviceID and ActionID.
+      this.skip();
 
       //Set MakerID and deviceID to correct UUID strings
       let MakerOrProductID = "D49B5D33-348B-470F-89A4-265313D166CE";
@@ -65,7 +68,7 @@ describe('Trigger action which is not part of given ProductID', function () {
       triggerResult.then(function(data) {
         chai.assert.fail(data);
       }, function(error) {
-        chai.assert.equal(error.code,expectedCode);
+        chai.assert.equal(error.statusCode,expectedCode);
         chai.assert.equal(error.message,expectedMessage);
       });
     });
@@ -73,6 +76,9 @@ describe('Trigger action which is not part of given ProductID', function () {
 
 describe('Trigger action which part of given ProductID but not activated for device', function () {
     it('should return 400 with status Not-OK', function () {
+      //This test has to be run on device configured with correct ProductID,
+      //DeviceID and ActionID.
+      this.skip();
 
       //Set MakerID and deviceID to correct UUID strings
       let MakerOrProductID = "D49B5D33-348B-470F-89A4-265313D166CE";

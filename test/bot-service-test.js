@@ -159,16 +159,16 @@ describe('get (/actions)', function () {
     });
 });
 
-describe('post (/status) for fresh keypair but with paired device', function () {
-    it('should return unable to decode response', function () {
+describe('post (/status) with paired device', function () {
+    it('should return 200', function () {
+      //This test has to be run on device configured with correct ProductID,
+      //DeviceID.
+      this.skip();
+
       //Reset the Store
       Store.setMakerOrProductID(undefined);
       Store.setDeviceID(undefined);
       Store.reset();
-
-      //Generate and save Key-Pair
-      const keyPair = KeyGenerator.generateKeyPair();
-      Store.setKeyPair(keyPair);
 
       //Set MakerID and deviceID to correct UUID strings
       let MakerOrProductID = "D49B5D33-348B-470F-89A4-265313D166CE";
@@ -180,41 +180,11 @@ describe('post (/status) for fresh keypair but with paired device', function () 
       let postResult = bot.post("/status")
 
       //assertions
-      let expectedErrorMessage = 'Unable to decode response from BoT server.'
+      let expectedMessage = '{"deviceID": "' +deviceID + '"}';
       postResult.then(function(data) {
-        chai.assert.fail(data)
+        chai.assert.equal(data.message, expectedMessage);
       }, function(error) {
-        chai.assert.equal(error.message, expectedErrorMessage);
-      });
-    });
-});
-
-describe('post (/status) for fresh keypair and fresh device', function () {
-    it('should return unable to decode response', function () {
-      //Reset the Store
-      Store.setMakerOrProductID(undefined);
-      Store.setDeviceID(undefined);
-      Store.reset();
-
-      //Generate and save Key-Pair
-      const keyPair = KeyGenerator.generateKeyPair();
-      Store.setKeyPair(keyPair);
-
-      //Set MakerID and deviceID to correct UUID strings
-      let MakerOrProductID = "D49B5D33-348B-470F-89A4-265313D166CE";
-      let deviceID = "927c2ed7-2600-40b8-9539-f9a85afdb44e";
-      Store.setMakerOrProductID(MakerOrProductID);
-      Store.setDeviceID(deviceID);
-
-      //Invoke GET request
-      let postResult = bot.post("/status")
-
-      //assertions
-      let expectedErrorMessage = 'Unable to decode response from BoT server.'
-      postResult.then(function(data) {
-        chai.assert.fail(data)
-      }, function(error) {
-        chai.assert.equal(error.message, expectedErrorMessage);
+        chai.assert.fail(error)
       });
     });
 });
