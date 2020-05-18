@@ -92,7 +92,7 @@ describe('get (/)', function () {
 });
 
 describe('get (/pair)', function () {
-    it('should return 206 with status as false', function () {
+    it('should return with status as false', function () {
 
       //Set MakerID and deviceID to some UUID string
       let MakerOrProductID = "3097b563-078f-4980-b58d-68d6e14d68fd";
@@ -105,12 +105,10 @@ describe('get (/pair)', function () {
 
       //assertions
       let expectedMessage = '{"status":false}';
-      let expectedStatusCode = 206;
       getResult.then(function(data) {
-        chai.assert.fail(data)
+        chai.assert.equal(data, expectedMessage)
       }, function(error) {
-        chai.assert.equal(error.statusCode, expectedStatusCode)
-        chai.assert.equal(error.message, expectedMessage)
+        chai.assert.fail(error)
       });
     });
 });

@@ -26,7 +26,7 @@ describe('getPairingStatus for already paired device', function () {
 });
 
 describe('getPairingStatus for not paired device', function () {
-    it('should return 206 with status as false', function () {
+    it('should return with status as false', function () {
 
       //Set MakerID and deviceID to some UUID strings
       let MakerOrProductID = "3097b563-078f-4980-b58d-68d6e14d68fd";
@@ -39,18 +39,16 @@ describe('getPairingStatus for not paired device', function () {
 
       //assertions
       let expectedMessage = '{"status":false}';
-      let expectedStatusCode = 206;
       pairResult.then(function(data) {
         chai.assert.fail(data);
       }, function(error) {
-        chai.assert.equal(error.statusCode, expectedStatusCode);
-        chai.assert.equal(error.message, expectedMessage);
+        chai.assert.equal(error, expectedMessage);
       });
     });
 });
 
 describe('pollPairingStatus for not paired device', function () {
-    it('should return 206 with status as false', function () {
+    it('should return with status as false', function () {
       //Comment below line to run this unit as it tries for
       //multiple attempts for polling
       this.skip();
@@ -66,12 +64,10 @@ describe('pollPairingStatus for not paired device', function () {
 
       //assertions
       let expectedMessage = '{"status":false}';
-      let expectedStatusCode = 206;
       pollResult.then(function(data) {
         chai.assert.fail(data);
       }, function(error) {
-        chai.assert.equal(error.statusCode, expectedStatusCode);
-        chai.assert.equal(error.message, expectedMessage);
+        chai.assert.equal(error, expectedMessage);
       });
     });
 });
