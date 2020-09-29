@@ -8,4 +8,6 @@ tests: ; npm test
 
 server: ; node lib/app.js $(makerID)
 
+bottalk: ; node lib/bottalk-service.js
+
 config: ; node lib/config.js $(key) $(value)
